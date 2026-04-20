@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4/20 시장 브리핑 — 이란 선박 나포로 하루 만에 완전 역전</title>
+<meta property="og:title" content="4/20 시장 브리핑 — 이란 선박 나포로 하루 만에 완전 역전">
+<meta property="og:description" content="주말 미 해군이 이란 화물선을 나포. WTI 유가가 하루 만에 -12%에서 +7%로 완전 뒤집힘. 이번 주 수요일 Tesla 실적이 방향 결정.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0b0b0d; --s:#17171b; --s2:#1e1e24; --bd:#2a2a32;
+  --t:#e4e4e7; --td:#8b8b96; --tm:#5c5c66;
+  --up:#22c55e; --dn:#ef4444; --w:#eab308;
+  --blue:#60a5fa; --purple:#a78bfa; --orange:#fb923c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.7;min-height:100vh}
+.ctr{max-width:720px;margin:0 auto;padding:20px 16px 80px}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--td);text-decoration:none;margin-bottom:16px;padding:6px 12px;background:var(--s);border:1px solid var(--bd);border-radius:6px}
+.back-link:hover{color:var(--t);border-color:#555}
+
+/* Article Header */
+.art-meta{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.meta-date{font-size:0.75rem;color:var(--td);font-weight:600}
+.meta-badge{font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(239,68,68,0.15);color:var(--dn)}
+
+h1.art-title{font-size:1.8rem;font-weight:900;color:#fff;line-height:1.3;letter-spacing:-0.02em;margin-bottom:12px}
+.art-lead{font-size:0.95rem;color:var(--td);line-height:1.8;padding:14px 16px;background:var(--s);border-left:3px solid var(--dn);border-radius:0 8px 8px 0;margin-bottom:24px}
+
+/* Dashboard */
+.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}
+.dcard{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:12px}
+.dcard.up{border-color:rgba(34,197,94,0.3)}
+.dcard.dn{border-color:rgba(239,68,68,0.3)}
+.dcard.wr{border-color:rgba(234,179,8,0.3)}
+.dc-label{font-size:0.65rem;color:var(--tm);margin-bottom:4px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+.dc-val{font-size:1.05rem;font-weight:800;color:#fff}
+.dc-sub{font-size:0.68rem;margin-top:3px}
+.dcard.up .dc-sub{color:var(--up)}
+.dcard.dn .dc-sub{color:var(--dn)}
+.dcard.wr .dc-sub{color:var(--w)}
+
+/* Section */
+.sec{margin:28px 0}
+.sec h2{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.01em}
+.sec h2 .icon{margin-right:6px}
+.sec p{font-size:0.87rem;color:var(--t);line-height:1.85;margin-bottom:12px}
+.sec p strong{color:#fff;font-weight:700}
+.sec p .hl-up{color:var(--up);font-weight:600}
+.sec p .hl-dn{color:var(--dn);font-weight:600}
+.sec p .hl-wr{color:var(--w);font-weight:600}
+
+/* Timeline */
+.timeline{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:14px 0}
+.tl-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.tl-item:last-child{border-bottom:none}
+.tl-date{flex-shrink:0;font-size:0.72rem;font-weight:700;color:var(--tm);width:60px;padding-top:2px}
+.tl-body{flex:1}
+.tl-title{font-size:0.84rem;font-weight:700;color:#fff;margin-bottom:2px}
+.tl-desc{font-size:0.76rem;color:var(--td);line-height:1.7}
+.tl-item.red .tl-date{color:var(--dn)}
+.tl-item.green .tl-date{color:var(--up)}
+.tl-item.yellow .tl-date{color:var(--w)}
+
+/* Scenario cards */
+.scenarios{display:grid;gap:10px;margin:14px 0}
+.scn{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px;border-left:3px solid}
+.scn.a{border-left-color:var(--up)}
+.scn.b{border-left-color:var(--w)}
+.scn.c{border-left-color:var(--dn)}
+.scn-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.scn-title{font-size:0.88rem;font-weight:700;color:#fff}
+.scn-prob{font-size:0.72rem;font-weight:600;padding:2px 8px;border-radius:10px}
+.scn.a .scn-prob{background:rgba(34,197,94,0.15);color:var(--up)}
+.scn.b .scn-prob{background:rgba(234,179,8,0.15);color:var(--w)}
+.scn.c .scn-prob{background:rgba(239,68,68,0.15);color:var(--dn)}
+.scn-desc{font-size:0.78rem;color:var(--td);line-height:1.7}
+
+/* Calendar */
+.cal{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:14px 0}
+.cal-row{display:flex;gap:10px;padding:11px 12px;border-bottom:1px solid var(--bd);align-items:center}
+.cal-row:last-child{border-bottom:none}
+.cal-day{flex-shrink:0;width:56px;font-size:0.72rem;font-weight:700;color:var(--tm)}
+.cal-event{flex:1;font-size:0.8rem;color:var(--td);line-height:1.5}
+.cal-event strong{color:#fff}
+.cal-row.star{background:rgba(234,179,8,0.05)}
+.cal-row.star .cal-day{color:var(--w)}
+
+/* Insights */
+.insights{background:linear-gradient(135deg,rgba(96,165,250,0.06),rgba(167,139,250,0.04));border:1px solid rgba(96,165,250,0.15);border-radius:12px;padding:16px;margin:14px 0}
+.insights h3{font-size:0.92rem;font-weight:700;color:var(--blue);margin-bottom:10px}
+.insight-item{padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.08);font-size:0.8rem;color:var(--t);line-height:1.7}
+.insight-item:last-child{border-bottom:none}
+.insight-item strong{color:var(--blue);font-weight:700}
+
+/* Glossary helper */
+.gloss-box{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px;margin:14px 0}
+.gloss-box h3{font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:8px}
+.gloss-box .gloss-terms{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 10px}
+.gloss-term{font-size:0.72rem;padding:4px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:14px;color:var(--td)}
+.gloss-link{display:inline-block;margin-top:6px;padding:9px 14px;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.3);border-radius:8px;color:var(--blue);font-size:0.8rem;font-weight:600;text-decoration:none}
+.gloss-link:hover{background:rgba(96,165,250,0.15)}
+
+/* Callout */
+.callout{background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.2);border-radius:10px;padding:14px 16px;margin:14px 0}
+.callout strong{color:var(--w)}
+.callout.red{background:rgba(239,68,68,0.05);border-color:rgba(239,68,68,0.2)}
+.callout.red strong{color:var(--dn)}
+.callout.green{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2)}
+.callout.green strong{color:var(--up)}
+.callout p{font-size:0.82rem;color:var(--t);line-height:1.75;margin-bottom:0}
+
+/* Navigation footer */
+.nav-footer{display:flex;gap:10px;margin:30px 0 16px}
+.nav-btn{flex:1;padding:13px;text-align:center;background:var(--s);border:1px solid var(--bd);border-radius:10px;color:var(--t);text-decoration:none;font-size:0.82rem;font-weight:600;transition:all 0.15s}
+.nav-btn:hover{border-color:#555;background:var(--s2)}
+.nav-btn.primary{background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.3);color:var(--blue)}
+
+.footer{text-align:center;font-size:0.7rem;color:var(--tm);padding-top:20px;border-top:1px solid var(--bd);line-height:1.8;margin-top:20px}
+.footer .disclaimer{padding:10px 14px;background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.15);border-radius:8px;color:#c87a7a;margin-bottom:12px;font-size:0.72rem}
+</style>
+</head>
+<body>
+<div class="ctr">
+
+  <a class="back-link" href="index.html">← 재테크클럽</a>
+
+  <!-- ARTICLE HEADER -->
+  <div class="art-meta">
+    <span class="meta-date">2026년 4월 20일 월요일</span>
+    <span class="meta-badge">🚨 긴급 업데이트</span>
+  </div>
+
+  <h1 class="art-title">주말 하나로 완전 역전 — 이란 선박 나포 &amp; WTI +7% 폭등</h1>
+
+  <div class="art-lead">
+    <strong>한 줄 요약.</strong> 지난주 금요일까지만 해도 "이란이 호르무즈 해협을 다시 연다"는 기대로 유가가 -12% 급락했습니다. 그런데 주말에 미 해군이 이란 화물선 TOUSKA를 나포하면서 모든 게 뒤집혔어요. 오늘 아침 WTI는 $89.74(+7%), 미국 주식 선물은 -0.8% 갭다운으로 출발합니다.
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dash">
+    <div class="dcard dn">
+      <div class="dc-label">🛢️ WTI 유가</div>
+      <div class="dc-val">$89.74</div>
+      <div class="dc-sub">+6.9% (4/19 대비)</div>
+    </div>
+    <div class="dcard dn">
+      <div class="dc-label">📉 S&amp;P 선물</div>
+      <div class="dc-val">-0.8%</div>
+      <div class="dc-sub">갭다운 개장 예고</div>
+    </div>
+    <div class="dcard wr">
+      <div class="dc-label">🪙 비트코인</div>
+      <div class="dc-val">$74,800</div>
+      <div class="dc-sub">$75K 지지 테스트</div>
+    </div>
+    <div class="dcard dn">
+      <div class="dc-label">😨 코인 F&amp;G</div>
+      <div class="dc-val">27</div>
+      <div class="dc-sub">Fear · 공포 구간</div>
+    </div>
+    <div class="dcard wr">
+      <div class="dc-label">📊 VIX</div>
+      <div class="dc-val">19~21</div>
+      <div class="dc-sub">갭다운 반영 중</div>
+    </div>
+    <div class="dcard wr">
+      <div class="dc-label">💵 USD/KRW</div>
+      <div class="dc-val">1,464</div>
+      <div class="dc-sub">원화 약세 유지</div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: 무슨 일이 -->
+  <div class="sec">
+    <h2><span class="icon">📖</span>무슨 일이 있었나?</h2>
+    <p>주말(4/19 토요일)에 중동에서 두 가지 큰 사건이 겹쳤습니다.</p>
+    <p><strong>첫째, 이란 혁명수비대가 아라비아해에서 상선을 공격</strong>했습니다. 이란은 "제재 위반 선박"이라 주장했지만 실제로는 긴장 고조 신호였어요.</p>
+    <p><strong>둘째, 미 해군이 이란 화물선 'TOUSKA'를 나포</strong>했습니다. 트럼프 대통령은 "이란 승무원이 명령을 거부해 엔진룸을 폭파하고 나포했다. 유엔 제재 위반 선박"이라고 발표했습니다.</p>
+    <p>이란의 반응은 강경했습니다. <span class="hl-dn">"협상 거부. 우리가 지나갈 수 없으면 다른 나라도 호르무즈 해협을 통과할 수 없다"</span>고 선언했죠. 4/17 "호르무즈 완전 개방" 발언이 사실상 백지화된 거예요.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="sec">
+    <h2><span class="icon">📅</span>유가 롤러코스터 타임라인</h2>
+    <div class="timeline">
+      <div class="tl-item red">
+        <div class="tl-date">4/12</div>
+        <div class="tl-body">
+          <div class="tl-title">이란 긴장 초기 → WTI $99 급등, S&amp;P 선물 -5%</div>
+          <div class="tl-desc">시장이 한 번 크게 흔들렸지만 S&amp;P는 이후 7,126까지 회복</div>
+        </div>
+      </div>
+      <div class="tl-item green">
+        <div class="tl-date">4/17</div>
+        <div class="tl-body">
+          <div class="tl-title">이란 FM "호르무즈 완전 개방" → WTI -12% ($83.85)</div>
+          <div class="tl-desc">긴장 완화 기대로 유가 급락, S&amp;P 500 7,041 신고가, 나스닥 12연속 상승</div>
+        </div>
+      </div>
+      <div class="tl-item red">
+        <div class="tl-date">4/19</div>
+        <div class="tl-body">
+          <div class="tl-title">이란 탱커 공격 + 미 해군 TOUSKA 나포</div>
+          <div class="tl-desc">이틀 만에 완전 역전. 4/8 파키스탄 중재 휴전도 사실상 파기</div>
+        </div>
+      </div>
+      <div class="tl-item red">
+        <div class="tl-date">4/20</div>
+        <div class="tl-body">
+          <div class="tl-title">WTI +6.9% ($89.74), S&amp;P 선물 -0.8% 갭다운</div>
+          <div class="tl-desc">이란 협상 거부 선언 → 시장 리스크오프 전환</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION: 왜 중요 -->
+  <div class="sec">
+    <h2><span class="icon">🤔</span>우리 자산에 어떤 영향?</h2>
+    <p><strong>1️⃣ 유가가 오르면 물가도 오릅니다.</strong> 기름값·운송비·난방비가 올라 전반적인 인플레이션 압력이 커져요. 연준이 금리 인하를 미루게 되면서 주식에는 부담이 됩니다.</p>
+    <p><strong>2️⃣ 한국 증시는 이중 타격을 받습니다.</strong> 외국인 투자자들이 위험 자산을 줄이기 시작하면 코스피에서 돈이 빠져나가고, 동시에 원화가 약세 흐름을 타며 달러/원이 1,460원대에서 버티는 중이에요.</p>
+    <p><strong>3️⃣ 비트코인도 연동됩니다.</strong> 리스크오프 국면에서는 코인 시장도 함께 흔들리는 경향이 있어요. 현재 BTC는 $75K 지지선을 테스트 중이며, 이탈 시 $70K 재테스트 우려가 있습니다.</p>
+
+    <div class="callout">
+      <p><strong>⚡ 핵심 패턴:</strong> 이 시장은 <strong>이란 뉴스 한 건에 유가 ±10%</strong> 움직이는 구조예요. 차트·이동평균선·RSI는 이 국면에서 큰 의미가 없고, <strong>외교 뉴스 단 하나</strong>만 추적하는 게 현실적입니다.</p>
+    </div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="sec">
+    <h2><span class="icon">📌</span>이번 주 핵심 일정</h2>
+    <div class="cal">
+      <div class="cal-row">
+        <div class="cal-day">월 4/20</div>
+        <div class="cal-event"><strong>오늘</strong> — 이란 나포 반응 · 갭다운 개장 · WTI $90 여부</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-day">화 4/21</div>
+        <div class="cal-event"><strong>GE · UnitedHealth</strong> 실적 · ADP 고용지표</div>
+      </div>
+      <div class="cal-row star">
+        <div class="cal-day">⭐ 수 4/22</div>
+        <div class="cal-event"><strong>Tesla 실적</strong> (장 마감 후) — EPS $0.38, 매출 $22.3B 예상<br>+ 이란 협상 재개 여부 (주간 최대 이벤트)</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-day">목 4/23</div>
+        <div class="cal-event">초기실업수당 · PMI 예비치 · 추가 실적 발표</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-day">금 4/24</div>
+        <div class="cal-event">신규주택판매 · 소비자심리지수 확정치</div>
+      </div>
+    </div>
+    <p><strong>수요일이 이번 주 최대 변곡점</strong>이에요. Tesla 실적 + 이란 협상 재개 여부가 동시에 나오면서 주간 방향이 결정됩니다.</p>
+  </div>
+
+  <!-- SCENARIOS -->
+  <div class="sec">
+    <h2><span class="icon">🎯</span>3가지 시나리오</h2>
+
+    <div class="scenarios">
+      <div class="scn a">
+        <div class="scn-head">
+          <span class="scn-title">🟢 A: 이란 협상 복귀</span>
+          <span class="scn-prob">확률 20%</span>
+        </div>
+        <div class="scn-desc">
+          이란이 나포된 선박을 협상 카드로 활용 → 백채널 대화 재개<br>
+          WTI $85 이하 회귀 → 주식 선물 낙폭 회복 → Tesla 실적 기대감으로 반등<br>
+          <strong style="color:var(--up);">→ 베스트 케이스: 나스닥 +3% 가능</strong>
+        </div>
+      </div>
+
+      <div class="scn b">
+        <div class="scn-head">
+          <span class="scn-title">🟡 B: 교착 + 실적장세</span>
+          <span class="scn-prob">확률 50%</span>
+        </div>
+        <div class="scn-desc">
+          이란 긴장 유지 but 큰 추가 사건 없음 → WTI $88~93 박스권<br>
+          주식 -1~2% 조정 후 Tesla 실적이 방향 결정<br>
+          <strong style="color:var(--w);">→ 가장 확률 높은 시나리오</strong>
+        </div>
+      </div>
+
+      <div class="scn c">
+        <div class="scn-head">
+          <span class="scn-title">🔴 C: 이란 확전</span>
+          <span class="scn-prob">확률 30%</span>
+        </div>
+        <div class="scn-desc">
+          이란이 추가 탱커 공격 또는 호르무즈 완전 봉쇄 재선언<br>
+          WTI $95~100 돌파, S&amp;P -3~5% 급락, VIX 25+, BTC $70K 재테스트<br>
+          <strong style="color:var(--dn);">→ 워스트 케이스: 방산·정유주 수혜</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="sec">
+    <h2><span class="icon">💡</span>기억할 핵심 포인트</h2>
+    <div class="insights">
+      <h3>📌 오늘의 인사이트 5가지</h3>
+
+      <div class="insight-item">
+        <strong>1. 이 시장은 뉴스 기반이에요.</strong> 기술적 분석(이동평균선·RSI 등)은 이 국면에서 의미가 약해요. 이란 외교 뉴스 하나만 추적하세요.
+      </div>
+      <div class="insight-item">
+        <strong>2. 4/12에도 비슷한 패턴이 있었어요.</strong> 당시 WTI $99·S&amp;P -5% 급락 후 시장은 7,126까지 회복했습니다. 반복적 헤드라인 공포에 매도는 역사적으로 손실이었어요.
+      </div>
+      <div class="insight-item">
+        <strong>3. 폴리마켓 예측: 호르무즈 정상화 확률 70.5%.</strong> 5/31까지 호르무즈가 정상화될 가능성을 시장은 높게 봅니다. 전면전보다는 협상 카드 확보로 해석하는 흐름.
+      </div>
+      <div class="insight-item">
+        <strong>4. BTC는 $75K 지지가 핵심.</strong> 이탈 시 $70K 재테스트 가능. 다만 ETF 누적 유입 $53B, AUM $128B로 기관 수급은 견고합니다.
+      </div>
+      <div class="insight-item">
+        <strong>5. 수요일(4/22)이 이번 주 변곡점.</strong> Tesla 실적 + 이란 협상 재개 여부가 동시에 나옵니다. 그 전까지는 관망이 안전한 구간.
+      </div>
+    </div>
+  </div>
+
+  <!-- HISTORY LESSON -->
+  <div class="sec">
+    <h2><span class="icon">📚</span>과거 유사 사건에서 배우기</h2>
+    <p>중동 긴장은 주식 시장에 주기적으로 반복되는 테마예요. <strong>4/12 이란 초기 공격</strong>에서도 비슷한 패턴이 있었습니다: WTI 급등 → S&amp;P 선물 -5% → 하지만 결국 7,126까지 회복했죠.</p>
+    <p>역사적으로 보면 <strong>지정학 리스크로 인한 급락은 평균 2~4주 내 회복</strong>하는 경우가 많았습니다. 물론 이번에도 그럴 거라고 보장할 순 없지만, <span class="hl-wr">공포 기반 매도는 대부분 잘못된 판단</span>이었다는 점은 기억할 만해요.</p>
+
+    <div class="callout green">
+      <p>📖 <strong>워렌 버핏의 말:</strong> "남이 두려워할 때 탐욕스럽게, 남이 탐욕스러울 때 두려워하라."<br>지금 코인 공포지수 27은 <strong>역사적 평균보다 아래</strong>입니다. 완전히 패닉은 아니지만 시장이 경계 모드에 들어섰다는 신호예요.</p>
+    </div>
+  </div>
+
+  <!-- GLOSSARY HELPER -->
+  <div class="sec">
+    <h2><span class="icon">🔍</span>이 브리핑에 나온 용어들</h2>
+    <div class="gloss-box">
+      <h3>모르는 용어가 있었나요?</h3>
+      <div class="gloss-terms">
+        <span class="gloss-term">🛢️ WTI</span>
+        <span class="gloss-term">📉 갭다운</span>
+        <span class="gloss-term">📊 VIX</span>
+        <span class="gloss-term">😨 공포·탐욕 지수</span>
+        <span class="gloss-term">🌊 호르무즈 해협</span>
+        <span class="gloss-term">💵 USD/KRW</span>
+        <span class="gloss-term">📈 S&amp;P 선물</span>
+        <span class="gloss-term">📊 EPS</span>
+        <span class="gloss-term">🪙 BTC ETF</span>
+      </div>
+      <p style="font-size:0.78rem;color:var(--td);margin-bottom:0;">생소한 용어는 용어집에서 쉽게 풀어서 설명해드려요 👇</p>
+      <a class="gloss-link" href="glossary.html">📖 투자 용어집 바로가기 →</a>
+    </div>
+  </div>
+
+  <!-- WHAT TO DO -->
+  <div class="sec">
+    <h2><span class="icon">🧭</span>일반 투자자는 어떻게?</h2>
+    <p><strong>신규 매수는 잠시 멈춤.</strong> 이란 뉴스 + Tesla 실적 대기 국면에서는 변동성이 극대화됩니다. 월요일 갭다운에 공황 매도도, 빠른 바닥 매수도 모두 위험해요.</p>
+    <p><strong>보유 포지션은 홀드.</strong> 장기 관점 포지션이면 단기 변동에 흔들리지 말고 4/12 패턴을 참고하세요. 다만 <strong>손절선(SL)은 반드시 확인</strong>해두고, 이탈 시 기계적으로 따르는 게 좋아요.</p>
+    <p><strong>이번 주 핵심 체크포인트:</strong></p>
+    <ul style="padding-left:20px;margin:8px 0 14px">
+      <li style="font-size:0.85rem;color:var(--t);line-height:1.9"><strong>월요일:</strong> 갭다운 흡수 여부 — 장중 반등하면 시장이 사건을 소화하는 중</li>
+      <li style="font-size:0.85rem;color:var(--t);line-height:1.9"><strong>화요일:</strong> GE·UnitedHealth 실적으로 경기 건전성 확인</li>
+      <li style="font-size:0.85rem;color:var(--t);line-height:1.9"><strong>수요일 ⭐:</strong> Tesla 실적 + 이란 뉴스 방향 → 주간 흐름 결정</li>
+      <li style="font-size:0.85rem;color:var(--t);line-height:1.9"><strong>목·금:</strong> PMI 경제지표 + 주간 흐름 정리</li>
+    </ul>
+
+    <div class="callout red">
+      <p><strong>⚠️ 피해야 할 행동:</strong><br>1) 공포에 쫓긴 전량 매도 — 역사적으로 손실 케이스가 많아요<br>2) 갭다운 "바닥 잡기" 시도 — 오전 저점이 진짜 저점인지 확인 불가<br>3) 레버리지 신규 진입 — 변동성 극대화 구간에선 손실도 3배</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-footer">
+    <a class="nav-btn primary" href="glossary.html">📖 용어집</a>
+    <a class="nav-btn" href="index.html">← 리포트 보관함</a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="disclaimer">
+      ⚠️ 이 브리핑은 <strong>정보 공유 목적</strong>이며 투자 권유나 특정 종목 추천이 아닙니다.<br>
+      투자 결정과 그에 따른 결과는 각자의 판단과 책임하에 이뤄집니다.
+    </div>
+    <p>💎 AI SYNC 재테크클럽 · AI가 분석한 매일의 시장 브리핑</p>
+    <p style="margin-top:4px;">궁금한 용어나 내용은 단톡방에 남겨주세요</p>
+  </div>
+
+</div>
+</body>
+</html>

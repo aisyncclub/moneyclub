@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI싱크 재테크클럽 — 투자 용어집 &amp; 리포트 보관함</title>
+<meta property="og:title" content="AI싱크 재테크클럽 — 투자 용어집 & 리포트 보관함">
+<meta property="og:description" content="매일 시장을 분석하고 쉽게 풀어드립니다. 초보자도 바로 이해할 수 있는 용어집과 상세 리포트.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0b0b0d; --s:#17171b; --s2:#1e1e24; --bd:#2a2a32;
+  --t:#e4e4e7; --td:#8b8b96; --tm:#5c5c66;
+  --up:#22c55e; --dn:#ef4444; --w:#eab308;
+  --blue:#60a5fa; --purple:#a78bfa; --orange:#fb923c; --pink:#ec4899;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;min-height:100vh}
+.ctr{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+
+/* Hero */
+.hero{text-align:center;padding:26px 0 22px}
+.logo{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:700;color:var(--up);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);padding:6px 14px;border-radius:20px;margin-bottom:14px}
+.hero h1{font-size:1.8rem;font-weight:900;color:#fff;line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
+.hero h1 .accent{background:linear-gradient(135deg,var(--blue),var(--up));background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero p{font-size:0.88rem;color:var(--td);max-width:500px;margin:0 auto}
+
+/* Stats */
+.stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0 22px}
+.stat-card{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:12px;text-align:center}
+.stat-num{font-size:1.3rem;font-weight:800;color:#fff;line-height:1}
+.stat-label{font-size:0.65rem;color:var(--td);margin-top:4px}
+
+/* Feature cards */
+.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px}
+.feat-card{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:20px 16px;text-align:center;text-decoration:none;color:inherit;transition:all 0.2s;position:relative;overflow:hidden}
+.feat-card:hover{border-color:#555;transform:translateY(-2px)}
+.feat-card.glossary{background:linear-gradient(135deg,rgba(96,165,250,0.08),rgba(167,139,250,0.05))}
+.feat-card.archive{background:linear-gradient(135deg,rgba(34,197,94,0.08),rgba(234,179,8,0.05))}
+.feat-icon{font-size:2rem;margin-bottom:8px}
+.feat-title{font-size:1rem;font-weight:700;color:#fff;margin-bottom:4px}
+.feat-sub{font-size:0.72rem;color:var(--td);line-height:1.5}
+.feat-cta{display:inline-block;margin-top:10px;font-size:0.74rem;font-weight:600;color:var(--blue)}
+.feat-card.archive .feat-cta{color:var(--up)}
+
+/* Section header */
+.sec-title{display:flex;align-items:center;justify-content:space-between;margin:30px 0 14px}
+.sec-title h2{font-size:1.05rem;font-weight:800;color:#fff}
+.sec-title .count{font-size:0.7rem;color:var(--td);background:var(--s);padding:3px 9px;border-radius:10px;border:1px solid var(--bd)}
+
+/* Filter tabs */
+.filter-tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px;scrollbar-width:none}
+.filter-tabs::-webkit-scrollbar{display:none}
+.ftab{flex-shrink:0;padding:5px 12px;background:var(--s);border:1px solid var(--bd);border-radius:20px;font-size:0.73rem;font-weight:500;color:var(--td);cursor:pointer;white-space:nowrap;transition:all 0.15s;font-family:inherit}
+.ftab:hover{border-color:#555;color:var(--t)}
+.ftab.on{background:var(--s2);border-color:#666;color:#fff;font-weight:600}
+
+/* Report card */
+.report-card{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-bottom:10px;text-decoration:none;color:inherit;display:block;transition:all 0.15s}
+.report-card:hover{border-color:#555;background:var(--s2)}
+.report-card.latest{border-left:3px solid var(--up)}
+.report-card.crisis{border-left:3px solid var(--dn)}
+.rc-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.rc-date{font-size:0.7rem;font-weight:600;color:var(--tm)}
+.rc-badge{font-size:0.6rem;font-weight:700;padding:2px 7px;border-radius:3px}
+.rc-badge.new{background:rgba(34,197,94,0.15);color:var(--up)}
+.rc-badge.crisis{background:rgba(239,68,68,0.15);color:var(--dn)}
+.rc-badge.normal{background:rgba(96,165,250,0.12);color:var(--blue)}
+.rc-title{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.4}
+.rc-summary{font-size:0.78rem;color:var(--td);line-height:1.7;margin-bottom:10px}
+.rc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+.rc-tag{font-size:0.65rem;padding:2px 8px;background:var(--s2);border:1px solid var(--bd);border-radius:10px;color:var(--td)}
+.rc-tag.hl{color:var(--up);border-color:rgba(34,197,94,0.3)}
+.rc-tag.wr{color:var(--w);border-color:rgba(234,179,8,0.3)}
+.rc-tag.dn{color:var(--dn);border-color:rgba(239,68,68,0.3)}
+.rc-arrow{font-size:0.72rem;color:var(--blue);font-weight:600}
+
+/* Footer */
+.footer{text-align:center;font-size:0.7rem;color:var(--tm);padding-top:30px;border-top:1px solid var(--bd);margin-top:30px;line-height:1.8}
+.footer .disclaimer{padding:10px 14px;background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.15);border-radius:8px;color:#c87a7a;margin-bottom:12px;font-size:0.72rem}
+
+/* Official Links */
+.official-links{margin:6px 0 22px;padding:14px 16px;background:var(--s);border:1px solid var(--bd);border-radius:12px}
+.ol-label{font-size:0.68rem;color:var(--tm);margin-bottom:10px;text-align:center;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.ol-chips{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.ol-chip{display:inline-flex;align-items:center;gap:5px;padding:7px 13px;background:var(--s2);border:1px solid var(--bd);border-radius:20px;font-size:0.76rem;font-weight:600;color:var(--t);text-decoration:none;transition:all 0.15s}
+.ol-chip:hover{border-color:#555;transform:translateY(-1px)}
+.ol-chip.youtube{color:#ff6b6b;border-color:rgba(255,107,107,0.25)}
+.ol-chip.youtube:hover{background:rgba(255,107,107,0.08)}
+.ol-chip.instagram{color:#e879f9;border-color:rgba(232,121,249,0.25)}
+.ol-chip.instagram:hover{background:rgba(232,121,249,0.08)}
+.ol-chip.blog{color:var(--blue);border-color:rgba(96,165,250,0.25)}
+.ol-chip.blog:hover{background:rgba(96,165,250,0.08)}
+.ol-chip.kakao{color:#ffd93d;border-color:rgba(255,217,61,0.25)}
+.ol-chip.kakao:hover{background:rgba(255,217,61,0.08)}
+.ol-chip.thread{color:#a3a3a3;border-color:rgba(163,163,163,0.25)}
+.ol-chip.thread:hover{background:rgba(163,163,163,0.08)}
+
+/* Responsive */
+@media (max-width:500px){
+  .hero h1{font-size:1.4rem}
+  .features{grid-template-columns:1fr}
+  .stats-bar{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="ctr">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="logo">💎 AI SYNC 재테크클럽</div>
+    <h1>투자 용어집 &amp;<br><span class="accent">리포트 보관함</span></h1>
+    <p>매일 시장을 AI가 분석하고, 누구나 이해할 수 있게 쉽게 풀어드립니다. 초보자부터 중급자까지.</p>
+  </div>
+
+  <!-- OFFICIAL LINKS -->
+  <div class="official-links">
+    <div class="ol-label">🔗 AI싱크클럽 공식 채널</div>
+    <div class="ol-chips">
+      <a class="ol-chip blog" href="https://aisyncclub.com/" target="_blank">🌐 커뮤니티</a>
+      <a class="ol-chip youtube" href="https://www.youtube.com/@AISyncClub" target="_blank">🎥 유튜브</a>
+      <a class="ol-chip thread" href="https://www.threads.com/@ai_sync_club" target="_blank">🧵 쓰레드</a>
+      <a class="ol-chip kakao" href="https://open.kakao.com/o/gbqHAHdi" target="_blank">💬 카톡 단톡방</a>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-num" id="statReports">1</div>
+      <div class="stat-label">누적 리포트</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">92</div>
+      <div class="stat-label">용어 정리</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">분야 (주식·부동산)</div>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <div class="features">
+    <a class="feat-card glossary" href="glossary.html">
+      <div class="feat-icon">📖</div>
+      <div class="feat-title">투자 용어집</div>
+      <div class="feat-sub">주식·코인·부동산<br>92개 용어 쉬운 풀이</div>
+      <div class="feat-cta">바로가기 →</div>
+    </a>
+    <a class="feat-card archive" href="#archive">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">리포트 보관함</div>
+      <div class="feat-sub">매일 발행 시장 브리핑<br>상세 분석 아카이브</div>
+      <div class="feat-cta">아래로 ↓</div>
+    </a>
+  </div>
+
+  <!-- ARCHIVE -->
+  <div id="archive">
+    <div class="sec-title">
+      <h2>📊 리포트 보관함</h2>
+      <span class="count" id="reportCount">1개</span>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="ftab on" onclick="filterReports('all',this)">전체</button>
+      <button class="ftab" onclick="filterReports('daily',this)">📅 데일리</button>
+      <button class="ftab" onclick="filterReports('crisis',this)">🚨 긴급</button>
+      <button class="ftab" onclick="filterReports('special',this)">📌 특집</button>
+    </div>
+
+    <div id="reportList">
+
+      <!-- 4/20 REPORT (LATEST - CRISIS) -->
+      <a class="report-card latest crisis" data-type="crisis" href="briefing-2026-04-20.html">
+        <div class="rc-top">
+          <span class="rc-date">2026년 4월 20일 (월)</span>
+          <span class="rc-badge new">NEW</span>
+          <span class="rc-badge crisis">🚨 긴급</span>
+        </div>
+        <div class="rc-title">주말 하나로 완전 역전 — 이란 선박 나포 · WTI +7% 급반등</div>
+        <div class="rc-summary">
+          금요일 호르무즈 재개방 기대(-12%)가 주말 미 해군 이란 화물선 나포 사건으로 하루 만에 완전 뒤집혔습니다. S&amp;P 선물 -0.8% 갭다운 개장, 이번 주 수요일 Tesla 실적이 방향을 결정합니다.
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag dn">🛢️ WTI $89.74</span>
+          <span class="rc-tag dn">📉 S&amp;P 선물 -0.8%</span>
+          <span class="rc-tag wr">🪙 BTC $75K 지지</span>
+          <span class="rc-tag hl">⭐ Tesla 실적 수</span>
+        </div>
+        <div class="rc-arrow">자세히 보기 →</div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="disclaimer">
+      ⚠️ 이 페이지의 모든 내용은 <strong>정보 공유 목적</strong>이며, 투자 권유나 특정 종목 추천이 아닙니다.<br>
+      투자 결정과 그에 따른 결과는 각자의 판단과 책임하에 이뤄집니다.
+    </div>
+    <p>💎 AI SYNC 재테크클럽 · AI가 분석한 매일의 시장 브리핑</p>
+    <p style="margin-top:4px;">궁금한 용어나 내용은 단톡방에 남겨주세요</p>
+  </div>
+
+</div>
+
+<script>
+function filterReports(type, btn) {
+  document.querySelectorAll('.ftab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  const cards = document.querySelectorAll('.report-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const show = type === 'all' || card.dataset.type === type;
+    card.style.display = show ? 'block' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('reportCount').textContent = visible + '개';
+}
+
+// Init stats
+const totalReports = document.querySelectorAll('.report-card').length;
+document.getElementById('statReports').textContent = totalReports;
+document.getElementById('reportCount').textContent = totalReports + '개';
+</script>
+</body>
+</html>

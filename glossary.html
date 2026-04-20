@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>투자 용어집 — 주식·코인·부동산 사전</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#111113; --s:#19191d; --s2:#222228; --bd:#2e2e36;
+  --t:#d4d4d8; --td:#8b8b96; --tm:#5c5c66;
+  --up:#22c55e; --dn:#ef4444; --w:#eab308;
+  --blue:#60a5fa; --purple:#a78bfa; --orange:#fb923c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;min-height:100vh}
+.ctr{max-width:720px;margin:0 auto;padding:20px 16px 60px}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--td);text-decoration:none;margin-bottom:20px;padding:6px 12px;background:var(--s);border:1px solid var(--bd);border-radius:6px}
+.back-link:hover{color:var(--t);border-color:#555}
+
+.header{text-align:center;padding:10px 0 14px}
+.header h1{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:4px}
+.header p{font-size:0.82rem;color:var(--td)}
+
+/* Domain selector (main big tabs) */
+.domain-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 14px}
+.domain-tab{padding:18px 14px;text-align:center;border-radius:14px;border:2px solid var(--bd);background:var(--s);cursor:pointer;transition:all 0.2s;font-family:inherit;color:var(--td)}
+.domain-tab:hover{border-color:#555}
+.dt-icon{font-size:1.5rem;margin-bottom:4px}
+.dt-label{font-size:0.95rem;font-weight:700;color:#fff}
+.dt-sub{font-size:0.68rem;color:var(--tm);margin-top:2px}
+.domain-tab.stock.on{border-color:var(--blue);background:rgba(96,165,250,0.08)}
+.domain-tab.stock.on .dt-label{color:var(--blue)}
+.domain-tab.realty.on{border-color:var(--up);background:rgba(34,197,94,0.08)}
+.domain-tab.realty.on .dt-label{color:var(--up)}
+
+/* Search */
+.search-wrap{position:sticky;top:0;z-index:10;background:var(--bg);padding:10px 0 8px}
+.search-inner{position:relative}
+.search-box{width:100%;padding:11px 16px 11px 40px;background:var(--s2);border:1px solid var(--bd);border-radius:10px;color:var(--t);font-size:0.88rem;font-family:inherit;outline:none;transition:border 0.15s}
+.search-box:focus{border-color:#555}
+.search-box::placeholder{color:var(--tm)}
+.search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:0.9rem;pointer-events:none}
+
+/* Category tabs */
+.cats{display:flex;gap:6px;overflow-x:auto;padding:0 0 14px;scrollbar-width:none;-ms-overflow-style:none}
+.cats::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;padding:5px 12px;background:var(--s);border:1px solid var(--bd);border-radius:20px;font-size:0.74rem;font-weight:500;color:var(--td);cursor:pointer;white-space:nowrap;transition:all 0.15s;font-family:inherit}
+.cat-btn:hover{border-color:#555;color:var(--t)}
+.cat-btn.on{background:var(--s2);border-color:#666;color:#fff;font-weight:600}
+.beginner-btn{border-color:rgba(34,197,94,0.3);color:var(--up)}
+.beginner-btn.on{background:rgba(34,197,94,0.15);border-color:var(--up);color:var(--up)}
+
+/* Section */
+.section{margin-bottom:4px}
+.section.hidden{display:none}
+.section-header{font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--tm);padding:14px 4px 6px}
+
+/* Term group */
+.term-group{background:var(--s);border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin-bottom:8px}
+
+.term-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;cursor:pointer;transition:background 0.12s;gap:10px;user-select:none}
+.term-row:hover{background:var(--s2)}
+.term-row + .term-row{border-top:1px solid var(--bd)}
+.term-row.open{background:var(--s2)}
+.term-left{display:flex;align-items:center;gap:10px;min-width:0}
+.term-name{font-size:0.9rem;font-weight:600;color:#fff;white-space:nowrap}
+.term-en{font-size:0.7rem;color:var(--tm);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.term-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.term-badge{font-size:0.62rem;font-weight:600;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.b-us{background:rgba(96,165,250,0.12);color:var(--blue)}
+.b-kr{background:rgba(34,197,94,0.12);color:var(--up)}
+.b-macro{background:rgba(234,179,8,0.12);color:var(--w)}
+.b-coin{background:rgba(167,139,250,0.12);color:var(--purple)}
+.b-basic{background:rgba(255,255,255,0.06);color:var(--td)}
+.b-tech{background:rgba(251,146,60,0.12);color:var(--orange)}
+.b-realty{background:rgba(34,197,94,0.12);color:var(--up)}
+.term-arrow{font-size:0.7rem;color:var(--tm);transition:transform 0.2s;width:14px;text-align:center}
+.term-row.open .term-arrow{transform:rotate(180deg)}
+
+.term-body{display:none;padding:14px 14px 16px;border-top:1px solid var(--bd);background:rgba(255,255,255,0.015)}
+.term-body.open{display:block}
+.term-desc{font-size:0.83rem;color:var(--td);line-height:1.85;margin-bottom:10px}
+.term-desc strong{color:var(--t)}
+.term-why{font-size:0.78rem;background:var(--s);border-radius:7px;padding:11px 13px;border-left:2px solid var(--bd);line-height:1.75}
+.term-why .label{font-size:0.63rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--tm);margin-bottom:5px}
+.term-levels{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.level{font-size:0.7rem;padding:3px 8px;border-radius:4px;font-weight:500}
+.l-good{background:rgba(34,197,94,0.1);color:var(--up)}
+.l-warn{background:rgba(234,179,8,0.1);color:var(--w)}
+.l-bad{background:rgba(239,68,68,0.1);color:var(--dn)}
+.l-neu{background:rgba(255,255,255,0.05);color:var(--td)}
+
+.no-result{text-align:center;padding:40px 20px;color:var(--tm);font-size:0.86rem;display:none}
+.no-result.show{display:block}
+
+.beginner-banner{display:none;background:rgba(34,197,94,0.07);border:1px solid rgba(34,197,94,0.2);border-radius:10px;padding:12px 16px;margin-bottom:12px;font-size:0.81rem;color:var(--up);line-height:1.6}
+.beginner-banner.show{display:block}
+
+.footer{text-align:center;font-size:0.7rem;color:var(--tm);padding-top:20px;border-top:1px solid var(--bd);line-height:1.8;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="ctr">
+
+  <a class="back-link" href="index.html">← 리포트 보관함</a>
+
+  <div class="header">
+    <h1>📖 투자 용어집</h1>
+    <p>분야를 선택하면 관련 용어가 보여요 — 클릭하면 설명이 펼쳐져요</p>
+  </div>
+
+  <!-- Domain Selector (Main Tabs) -->
+  <div class="domain-tabs">
+    <button class="domain-tab stock on" onclick="setDomain('stock',this)">
+      <div class="dt-icon">📈</div>
+      <div class="dt-label">주식 · 코인</div>
+      <div class="dt-sub">62개 용어</div>
+    </button>
+    <button class="domain-tab realty" onclick="setDomain('realty',this)">
+      <div class="dt-icon">🏠</div>
+      <div class="dt-label">부동산</div>
+      <div class="dt-sub">30개 용어</div>
+    </button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <div class="search-inner">
+      <span class="search-icon">🔍</span>
+      <input class="search-box" id="searchInput" placeholder="용어 검색 (예: VIX, LTV, 청약...)" oninput="applyFilter()" autocomplete="off">
+    </div>
+  </div>
+
+  <!-- Dynamic Category Tabs -->
+  <div class="cats" id="catTabs"></div>
+
+  <!-- Beginner Banner -->
+  <div class="beginner-banner" id="beginnerBanner">
+    🌱 <strong>초보자 추천 모드</strong> — 처음 시작할 때 꼭 알아야 할 핵심 용어만 보고 있어요. 준비됐으면 <strong>전체</strong>로 넘어가세요!
+  </div>
+
+  <div id="noResult" class="no-result">검색 결과가 없어요 🔎</div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- ========== 주식 · 코인 ========== -->
+  <!-- ═══════════════════════════════════ -->
+
+  <!-- 🇺🇸 미국 증시 -->
+  <div class="section" data-cat="us" data-domain="stock">
+    <div class="section-header">🇺🇸 미국 증시</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-level="b" data-keywords="s&p 500 sp500 미국 지수 주식" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">S&amp;P 500</span><span class="term-en">Standard &amp; Poor's 500</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">미국을 대표하는 <strong>500개 대기업</strong>의 주가를 묶어 하나의 숫자로 만든 지수예요.<br>삼성·SK·LG처럼 대기업만 모아서 평균 낸 것과 비슷해요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>이 지수가 오르면 → 미국 경제가 건강하다는 신호<br>이 지수가 내리면 → 전 세계 시장도 같이 흔들리는 경향<br>한국 증시도 미국 S&amp;P 500에 크게 영향받아요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-level="b" data-keywords="나스닥 nasdaq 기술주 테슬라 애플 엔비디아" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">나스닥 (NASDAQ)</span><span class="term-en">NASDAQ Composite</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">애플·테슬라·엔비디아 같은 <strong>기술·성장 기업</strong> 중심의 미국 지수예요.<br>S&amp;P 500보다 더 많이 오르고 더 많이 내리는 특징이 있어요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>금리 낮을 때 → 나스닥 강세 (기술주에 유리)<br>금리 높을 때 → 나스닥 약세 (대출 비용 부담)<br>한국 코스닥과 비슷한 성격</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-level="b" data-keywords="다우 다우존스 dow jones 블루칩" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">다우 (Dow Jones)</span><span class="term-en">Dow Jones Industrial Average</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">미국에서 가장 오래된 지수. <strong>30개 대형 전통 기업</strong>만 포함해요.<br>JP모건·보잉·맥도날드 같은 탄탄한 회사들이에요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>뉴스에서 "미국 증시 -500pt 하락"이라고 할 때 보통 이 다우를 말해요.<br>S&amp;P 500보다 변동성이 작고 안정적인 편이에요.</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-level="b" data-keywords="vix 공포지수 변동성 공포 탐욕" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">VIX (공포지수)</span><span class="term-en">CBOE Volatility Index</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">시장이 <strong>얼마나 불안한지</strong> 측정하는 온도계예요.<br>투자자들이 "앞으로 주가가 크게 흔들릴 것 같다"고 느낄수록 숫자가 올라가요.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-good">~15 안정 😌</span>
+            <span class="level l-warn">15~25 주의 😟</span>
+            <span class="level l-bad">25~35 불안 😰</span>
+            <span class="level l-bad">35+ 공포 😱</span>
+          </div><br>VIX 40 이상이면 역설적으로 <strong>저점 매수 신호</strong>로 보는 경우가 많아요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-level="b" data-keywords="공포탐욕 fear greed 심리지수" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">공포·탐욕 지수</span><span class="term-en">Fear &amp; Greed Index</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">투자자들이 <strong>겁먹고 있는지(공포), 욕심내고 있는지(탐욕)</strong>를 0~100으로 표현해요.<br>CNN에서 매일 발표해요.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-bad">0~25 극도의 공포 → 역발상 매수</span>
+            <span class="level l-warn">26~45 공포</span>
+            <span class="level l-neu">46~55 중립</span>
+            <span class="level l-warn">56~75 탐욕</span>
+            <span class="level l-bad">76~100 극탐욕 → 고점 주의</span>
+          </div><br>워렌 버핏: <strong>"남이 두려워할 때 탐욕스럽게, 남이 탐욕스러울 때 두려워하라"</strong></div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-level="b" data-keywords="선물 futures 갭다운 갭업 개장" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">선물 / 갭다운·갭업</span><span class="term-en">Futures / Gap Down·Up</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>선물</strong>: 주식시장 문 닫은 밤에도 거래되는 '예약 주문' 같은 것.<br><strong>갭다운</strong>: 나쁜 뉴스로 오늘 아침 크게 하락해서 시작<br><strong>갭업</strong>: 좋은 뉴스로 크게 올라서 시작</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>"S&amp;P 선물 -1%"라는 뉴스 → 오늘 미국 증시 약 -1% 하락 출발 예고<br>한국 증시는 미국 선물에 특히 민감하게 반응해요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="빅테크 매그니피센트 magnificent7 애플 마이크로소프트 엔비디아 아마존 메타 알파벳 테슬라" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">매그니피센트 7</span><span class="term-en">Magnificent Seven</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">미국 시가총액 상위를 차지하는 <strong>7대 빅테크 기업</strong>이에요.<br>Apple · Microsoft · NVIDIA · Amazon · Meta · Alphabet · Tesla</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>이 7개 기업이 S&amp;P 500 전체 시가총액의 약 30%를 차지해요<br>이들 실적 발표 때마다 시장 전체가 흔들려요<br>"빅테크 약세" = 나스닥·S&amp;P 500 전반이 내려가는 신호</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="시가총액 market cap 대형주 중형주 소형주 large mid small cap" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">시가총액 (Market Cap)</span><span class="term-en">Market Capitalization</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">회사의 <strong>주식 전체의 가치</strong>. 주가 × 발행 주식 수.<br>예) 엔비디아 주가 $900 × 주식 245억 개 = 시가총액 약 2.2조 달러</div>
+        <div class="term-why"><div class="label">규모별 분류</div>
+          <div class="term-levels">
+            <span class="level l-good">대형주 (Large Cap): 100억 달러↑ — 안정</span>
+            <span class="level l-warn">중형주 (Mid Cap): 20~100억 달러 — 균형</span>
+            <span class="level l-bad">소형주 (Small Cap): 20억 달러↓ — 고위험·고수익</span>
+          </div></div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="섹터 sector 업종 에너지 기술 헬스케어 금융 소비재" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">섹터 (업종)</span><span class="term-en">Sector / Industry</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">S&amp;P 500은 <strong>11개 업종(섹터)</strong>으로 나뉘어요.<br>경기 상황에 따라 잘 나가는 섹터가 달라져요.</div>
+        <div class="term-why"><div class="label">대표 섹터별 특징</div>
+          기술(XLK): 성장형 — 금리 낮을 때 유리<br>
+          에너지(XLE): 유가 오를 때 유리<br>
+          헬스케어(XLV): 경기 방어형 — 위기에 강함<br>
+          금융(XLF): 금리 높을 때 유리<br>
+          유틸리티(XLU): 배당형 — 경기 침체기에 인기</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="배당 dividend 배당수익률 yield 배당주" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">배당 / 배당수익률</span><span class="term-en">Dividend / Dividend Yield</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>배당</strong>: 기업이 이익의 일부를 주주에게 현금으로 나눠주는 것<br><strong>배당수익률</strong>: 주가 대비 배당금 비율 (연간 배당 ÷ 주가 × 100)</div>
+        <div class="term-why"><div class="label">예시로 보면</div>
+          주가 $100짜리 주식이 연간 $4 배당 → 배당수익률 4%<br>
+          AT&amp;T, 코카콜라 같은 기업이 고배당주로 유명해요<br>
+          배당락일: 배당 권리를 얻는 마지막 날 — 이후 주가 배당만큼 하락</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="ipo 기업공개 상장 공모 공모가" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">IPO (기업공개)</span><span class="term-en">Initial Public Offering</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">비상장 기업이 처음으로 <strong>주식시장에 상장</strong>하는 것.<br>공모가: 처음 공개되는 주식 가격</div>
+        <div class="term-why"><div class="label">알아두면 좋은 점</div>
+          상장 당일 급등하는 경우가 많지만 이후 급락하기도 해요<br>
+          "공모주 청약": 상장 전에 미리 주식을 신청해서 받는 것<br>
+          최근 핫한 AI·반도체 기업 IPO는 시장 전체 관심을 끌어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="어닝 실적발표 어닝시즌 earnings season 분기" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">어닝 시즌</span><span class="term-en">Earnings Season</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">미국 기업들이 분기(3개월) 실적을 몰아서 발표하는 기간이에요.<br>보통 <strong>1·4·7·10월 중순~말</strong>에 집중돼요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>
+          개별 종목뿐 아니라 시장 전체 분위기를 바꿀 수 있어요<br>
+          실적 서프라이즈 → 해당 섹터 전체 상승<br>
+          실적 쇼크 → 해당 섹터 전체 하락<br>
+          테슬라·애플·엔비디아 등 빅테크 발표가 핵심</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="eps 주당순이익 어닝 가이던스 실적 beat miss" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">EPS / 어닝 비트·미스</span><span class="term-en">EPS / Earnings Beat · Miss</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>EPS</strong>(주당순이익): 기업이 주식 1개당 벌어들인 순이익<br><strong>가이던스</strong>: 다음 분기 실적 전망치 (이게 더 중요한 경우도 많아요)</div>
+        <div class="term-why"><div class="label">어닝 비트 vs 미스</div>
+          예상 EPS $1.00 → 실제 $1.20 = <strong>비트(Beat)</strong> → 주가 급등<br>
+          예상 $1.00 → 실제 $0.80 = <strong>미스(Miss)</strong> → 주가 급락<br>
+          주가가 "실적보다 기대감"으로 오르는 경우, 비트해도 주가가 빠지는 역설이 생기기도 해요 ("소문에 사고 뉴스에 팔아라")</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="us" data-keywords="52주 신고가 신저가 52week high low 역대 최고" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">52주 신고가 / 신저가</span><span class="term-en">52-Week High / Low</span></div>
+        <div class="term-right"><span class="term-badge b-us">미국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">최근 1년(52주) 동안의 <strong>최고가·최저가</strong>예요.<br>현재 주가가 어느 위치인지 파악하는 기준점이에요.</div>
+        <div class="term-why"><div class="label">어떻게 활용하나요?</div>
+          52주 신고가 돌파 → 강한 상승 모멘텀 신호 → SEPA 전략에서 매수 신호<br>
+          52주 신저가 근접 → 심리적 지지선 or 하락 가속 신호<br>
+          신고가 돌파 후 유지되면 → 추세 강화 가능성</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🇰🇷 한국 증시 -->
+  <div class="section" data-cat="kr" data-domain="stock">
+    <div class="section-header">🇰🇷 한국 증시</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-level="b" data-keywords="코스피 kospi 한국 지수 대형주" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">코스피 (KOSPI)</span><span class="term-en">Korea Composite Stock Price Index</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">삼성전자·SK하이닉스·현대차 같은 <strong>한국 대형주 전체</strong>를 묶은 지수예요.<br>미국의 S&amp;P 500에 해당해요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>외국인 투자자들이 돈 빼고 넣는 것에 크게 반응해요.<br>달러 환율 오를수록(원화 약세) → 외국인 이탈 → 코스피 하락 패턴이 많아요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-level="b" data-keywords="코스닥 kosdaq 중소형 기술주 바이오" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">코스닥 (KOSDAQ)</span><span class="term-en">Korea Securities Dealers Automated Quotation</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">바이오·IT·게임 같은 <strong>중소형 성장 기업</strong>들의 지수예요.<br>미국 나스닥과 성격이 비슷해요 — 잘 오르고 잘 내려요.</div>
+        <div class="term-why"><div class="label">코스피 vs 코스닥</div>코스피 → 삼성·현대 같은 대기업 (안정적)<br>코스닥 → 성장 가능성 있는 중소기업 (변동성 큼)<br>리스크 감수 가능하면 코스닥, 안정 선호하면 코스피</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-level="b" data-keywords="달러 원화 환율 usd krw 외환" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">달러/원 환율</span><span class="term-en">USD/KRW Exchange Rate</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">1달러를 사는 데 원화가 얼마나 필요한지예요.<br>예) 1,464원 → 1달러 사려면 1,464원 필요</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-good">~1,300 원화 강세 😊</span>
+            <span class="level l-neu">1,300~1,400 보통</span>
+            <span class="level l-warn">1,400~1,500 원화 약세</span>
+            <span class="level l-bad">1,500+ 위기 😱</span>
+          </div><br>원화 약세 → 수입품 비싸짐 → 물가 상승<br>외국인들은 환율 손해 볼까봐 한국 주식 팔기도 해요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-level="b" data-keywords="외국인 기관 개인 수급 매수 매도" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">외국인·기관·개인 수급</span><span class="term-en">Foreign / Institutional / Retail Flow</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">한국 주식 시장의 3가지 플레이어:<br><strong>외국인</strong> (해외 투자자) · <strong>기관</strong> (은행·펀드) · <strong>개인</strong> (일반 투자자)</div>
+        <div class="term-why"><div class="label">수급이 왜 중요한가요?</div>외국인이 사면 → 주가 오르는 경향<br>외국인이 팔면 → 주가 내리는 경향<br>"외국인 -3,000억 순매도" = 외국인이 오늘 3,000억 어치 팔았다는 뜻</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-keywords="사이드카 서킷브레이커 circuit breaker 매매정지 급락" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">서킷브레이커 / 사이드카</span><span class="term-en">Circuit Breaker / Sidecar</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">주가가 급격히 떨어질 때 <strong>잠깐 매매를 멈추는</strong> 안전장치예요.</div>
+        <div class="term-why"><div class="label">발동 조건</div>
+          <strong>사이드카</strong>: 선물 가격이 전날보다 5% 이상 급등·급락 → 5분간 프로그램 매매 중단<br>
+          <strong>서킷브레이커</strong>: 코스피가 8% 이상 급락 → 20분간 전체 매매 중단<br>
+          발동되면 일시적으로 공황을 막아주지만, 재개 후 추가 하락하는 경우도 있어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-keywords="공매도 short selling 대차 잔고 금지" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">공매도</span><span class="term-en">Short Selling</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">주식을 <strong>빌려서 팔고, 나중에 싸게 사서 갚아</strong> 차익을 노리는 전략.<br>주가가 내려갈 거라고 예상할 때 수익을 낼 수 있어요.</div>
+        <div class="term-why"><div class="label">왜 논란이 많나요?</div>
+          공매도 많아지면 → 주가 하락 압박 가중<br>
+          기관·외국인만 유리 → 개인 투자자 역차별 주장<br>
+          한국은 공매도 금지·허용을 반복하는 독특한 시장<br>
+          "공매도 잔고 급증" = 기관이 하락에 베팅 중이라는 신호</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-keywords="per pbr roe 주가수익비율 밸류에이션 저평가 고평가" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">PER / PBR / ROE</span><span class="term-en">Price-to-Earnings / Book / Return on Equity</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>PER</strong>(주가수익비율): 주가가 이익의 몇 배인지. 낮으면 저평가 가능성<br><strong>PBR</strong>(주가순자산비율): 주가가 순자산의 몇 배인지. 1 미만이면 자산보다 싸게 거래<br><strong>ROE</strong>(자기자본이익률): 투자한 돈 대비 얼마나 잘 버는지</div>
+        <div class="term-why"><div class="label">어떻게 보나요?</div>
+          PER 10 이하 → 상대적 저평가 (업종 평균과 비교)<br>
+          PBR 1 미만 → 청산 가치보다 싸게 거래 → 가치주 투자자 관심<br>
+          ROE 15%↑ → 수익성 좋은 기업 → 버핏이 좋아하는 기준<br>
+          단, 성장주(테슬라·엔비디아)는 PER 100 이상이어도 매수세가 붙기도 해요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-keywords="프로그램 매매 바스켓 베이시스 선물 현물" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">프로그램 매매</span><span class="term-en">Program Trading</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">컴퓨터가 <strong>여러 종목을 동시에 자동으로 사거나 파는</strong> 기관의 대량 거래예요.<br>개별 종목 판단 없이 지수 전체를 바구니(바스켓)처럼 거래해요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>
+          장 마감 30분 전 프로그램 매매 집중 → 급등·급락 잦아요<br>
+          "프로그램 매수 2,000억" = 기관이 자동으로 대량 매수<br>
+          선물-현물 가격 차이(베이시스)를 이용한 차익 거래가 많아요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="kr" data-keywords="etf 한국 tiger kodex kbstar 인버스 레버리지" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">국내 ETF (TIGER·KODEX)</span><span class="term-en">Korean ETF</span></div>
+        <div class="term-right"><span class="term-badge b-kr">한국 증시</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">지수·업종·테마를 따라가는 <strong>묶음 상품</strong>. 주식처럼 사고팔 수 있어요.<br>TIGER(미래에셋), KODEX(삼성), KBSTAR(KB) 등이 대표 브랜드예요.</div>
+        <div class="term-why"><div class="label">대표 ETF 예시</div>
+          KODEX 200: 코스피200 추종 (삼성전자·SK하이닉스 등)<br>
+          TIGER 미국S&P500: 미국 S&amp;P500 추종 (국내에서 달러 투자)<br>
+          KODEX 인버스: 지수 하락 시 수익 (하락 방어용)<br>
+          KODEX 레버리지: 지수 상승의 2배 수익 (고위험)</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🌍 매크로 -->
+  <div class="section" data-cat="macro" data-domain="stock">
+    <div class="section-header">🌍 매크로 (거시경제)</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-level="b" data-keywords="금리 기준금리 fed 연준 금리인상 인하" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">기준금리 / 연준(Fed)</span><span class="term-en">Federal Funds Rate / Federal Reserve</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>연준(Fed)</strong>: 미국 중앙은행. 전 세계 경제의 심장 박동 조절자.<br><strong>기준금리</strong>: 돈을 빌릴 때 기본이 되는 이자율. 연준이 결정해요.</div>
+        <div class="term-why"><div class="label">왜 이렇게 중요한가요?</div>금리 올리면 → 대출 비용↑ → 기업 이익↓ → 주식↓<br>금리 내리면 → 대출 비용↓ → 투자 늘어남 → 주식↑<br><strong>전 세계 모든 투자자가 Fed 발표에 촉각을 세우는 이유예요</strong></div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="fomc 파월 연준 회의 금리결정 점도표" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">FOMC / 파월의장</span><span class="term-en">Federal Open Market Committee</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>FOMC</strong>: 연준이 금리를 결정하는 회의. 1년에 8번 열려요.<br><strong>파월의장</strong>: 현 연준 의장 — 그의 발언 한 마디에 시장이 들썩여요.</div>
+        <div class="term-why"><div class="label">핵심 개념</div>
+          <strong>점도표(Dot Plot)</strong>: FOMC 위원들이 앞으로 금리를 어떻게 예상하는지 시각화<br>
+          "파월이 비둘기(Dovish)" = 금리 인하 의향 → 주식 호재<br>
+          "파월이 매(Hawkish)" = 금리 인상 의향 → 주식 악재<br>
+          FOMC 회의 전날 밤은 특히 변동성이 커요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-level="b" data-keywords="cpi 물가 인플레이션 소비자물가" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">CPI (소비자물가지수)</span><span class="term-en">Consumer Price Index</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">일상에서 쓰는 <strong>물건값이 얼마나 올랐는지</strong> 측정하는 지표예요.<br>식품·기름·집세 등 수백 가지 가격을 종합해서 계산해요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>CPI 높음 → 물가 오름 → 금리 올릴 가능성↑ → 주식 부담<br>CPI 낮음 → 물가 안정 → 금리 내릴 여지↑ → 주식 호재<br>매달 발표일이면 주식 시장이 크게 흔들려요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="ppi 생산자물가 도매물가" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">PPI (생산자물가지수)</span><span class="term-en">Producer Price Index</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">공장에서 물건 만들 때 드는 <strong>원재료·생산 비용이 얼마나 올랐는지</strong>예요.<br>CPI보다 한 단계 앞선 선행 지표예요.</div>
+        <div class="term-why"><div class="label">핵심 포인트</div>PPI 상승 → 나중에 CPI도 오를 예고 → 금리 인하 어려움<br>Core PPI(근원): 유가·식품 빼고 계산 → 더 정확한 인플레 신호</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-level="b" data-keywords="wti 유가 원유 brent 브렌트 이란 호르무즈" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">WTI (국제 유가)</span><span class="term-en">West Texas Intermediate</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">미국 기준 <strong>원유 가격</strong>이에요. 전 세계 에너지 가격의 기준점.<br>브렌트(Brent)는 유럽 기준 원유 — 보통 WTI보다 조금 비싸요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>유가 오름 → 기름값·물가 상승 → 금리 내리기 어려움 → 주식 부담<br>유가 내림 → 물가 안정 → 금리 인하 여지 → 주식 호재<br>이란·중동 전쟁 뉴스에 가장 민감하게 반응하는 지표</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="호르무즈 이란 지정학 리스크 중동 전쟁 나포" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">호르무즈 해협 / 지정학 리스크</span><span class="term-en">Hormuz Strait / Geopolitical Risk</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>호르무즈 해협</strong>: 이란과 아라비아 반도 사이의 좁은 바다.<br>전 세계 원유 수출의 약 <strong>20%</strong>가 이 해협을 통과해요.</div>
+        <div class="term-why"><div class="label">왜 이렇게 중요한가요?</div>
+          이란이 해협 봉쇄 위협 → 유가 즉시 급등<br>
+          이란 선박 나포(2026.4.19) → WTI +7% 급등<br>
+          호르무즈 봉쇄되면 → 한국 정유·에너지 기업 직격<br>
+          중동 긴장 고조 → 금 상승, 주식 하락, 방산주 상승</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-level="b" data-keywords="금 gold 안전자산 헤지" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">금 (Gold)</span><span class="term-en">Gold / Safe Haven</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">전쟁·위기·불확실성이 클수록 오르는 <strong>전통적 안전자산</strong>이에요.<br>달러 가치가 떨어질 때도 오르는 특성이 있어요.</div>
+        <div class="term-why"><div class="label">금값이 오르는 신호</div>전쟁·지정학 리스크 증가 / 달러(DXY) 약세<br>인플레이션 상승 우려 / 주식 시장 불안<br>→ 이 4가지가 겹치면 금이 크게 오르는 경향이 있어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="dxy 달러 인덱스 달러강세 약세" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">DXY (달러 인덱스)</span><span class="term-en">US Dollar Index</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">달러가 주요 통화(유로·엔·파운드 등)에 비해 <strong>얼마나 강한지</strong> 측정해요.<br>100이 기준 — 위면 달러 강세, 아래면 약세.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>DXY↑(달러 강세) → 비트코인·금·신흥국 주식↓<br>DXY↓(달러 약세) → 비트코인·금·신흥국 주식↑<br>한국 원화도 DXY에 반비례하는 경향이 있어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="nfp 고용 비농업 실업률 일자리 payrolls" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">NFP (비농업 고용지수)</span><span class="term-en">Non-Farm Payrolls</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">미국에서 지난 한 달 동안 <strong>일자리가 몇 개 만들어졌는지</strong> 보여주는 지표예요.<br>매달 첫 번째 금요일에 발표해요.</div>
+        <div class="term-why"><div class="label">어떻게 해석하나요?</div>일자리 많이 늘어남 → 경제 좋음 → But 임금 상승 → 인플레 우려<br>일자리 줄어듦 → 경제 둔화 → 금리 인하 기대<br>"너무 좋아도, 너무 나빠도" 시장이 흔들리는 복잡한 지표</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="gdp 성장률 경제성장 국내총생산 성장둔화" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">GDP (국내총생산)</span><span class="term-en">Gross Domestic Product</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">한 나라에서 1년 동안 만들어낸 <strong>모든 물건과 서비스의 총합</strong>.<br>경제 규모와 성장 속도를 보여주는 가장 기본적인 지표예요.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          GDP 성장률 2~3%: 건강한 성장<br>
+          GDP 성장률 0%: 경제 정체<br>
+          GDP 2분기 연속 마이너스 = <strong>경기침체(Recession)</strong> 공식 선언<br>
+          분기마다 발표 — 예상치 대비 상회·하회로 시장 반응</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="경기침체 recession 스태그플레이션 stagflation 침체" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">경기침체 / 스태그플레이션</span><span class="term-en">Recession / Stagflation</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>경기침체</strong>: GDP가 2분기 연속 감소. 실업 증가, 소비 감소.<br><strong>스태그플레이션</strong>: 최악의 시나리오. 경기는 침체인데 물가는 오르는 상황.</div>
+        <div class="term-why"><div class="label">투자에 미치는 영향</div>
+          경기침체 우려 → 채권·금·현금 선호, 주식 하락<br>
+          스태그플레이션 → 금리 올려도 안되고 내려도 안되는 딜레마<br>
+          1970년대 오일쇼크가 대표적 스태그플레이션 사례<br>
+          에너지 위기(WTI 급등)가 스태그 위험을 높이는 요인</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="pmi ism 구매관리자지수 제조업 서비스 경기" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">PMI / ISM 지수</span><span class="term-en">Purchasing Managers' Index</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">기업 구매 담당자들에게 <strong>"지금 경기 좋아요, 나빠요?"</strong>를 묻는 설문 지표예요.<br>50이 기준 — 위면 확장, 아래면 수축.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-good">50↑ 경기 확장 📈</span>
+            <span class="level l-neu">50 기준선</span>
+            <span class="level l-bad">50↓ 경기 수축 📉</span>
+          </div><br>
+          ISM 제조업 PMI: 공장 경기 / ISM 서비스 PMI: 서비스 경기<br>
+          월초에 발표 → 그 달 경제 흐름의 첫 신호탄</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="장단기 금리역전 yield curve inversion 국채 10년 2년 경기침체 신호" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">장단기 금리 역전</span><span class="term-en">Yield Curve Inversion</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">보통 <strong>10년 국채 금리 &gt; 2년 국채 금리</strong>가 정상. 역전되면 이상 신호.<br>단기 이자가 장기 이자보다 높다 = 시장이 "미래가 더 어두울 것"이라 판단하는 것.</div>
+        <div class="term-why"><div class="label">왜 무서운 지표인가요?</div>
+          역전 이후 6~18개월 이내 경기침체가 온 경우가 역사적으로 많아요<br>
+          "10Y-2Y 스프레드 -0.5%" = 장단기 금리 역전 심화<br>
+          역전 해소(역전에서 정상으로) 되는 시점이 오히려 침체 직전이라는 연구도 있어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="macro" data-keywords="관세 tariff 무역전쟁 트럼프 중국 무역 수출" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">관세 / 무역전쟁</span><span class="term-en">Tariff / Trade War</span></div>
+        <div class="term-right"><span class="term-badge b-macro">매크로</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>관세</strong>: 수입 상품에 붙이는 세금. 올리면 수입품이 비싸져요.<br>미국이 중국·한국 상품에 관세를 높이면 해당 기업 이익이 줄어요.</div>
+        <div class="term-why"><div class="label">무역전쟁이 주식에 미치는 영향</div>
+          관세 인상 발표 → 수출 기업 주가 급락 (삼성·SK·현대 등)<br>
+          관세 협상 타결 → 반등<br>
+          2025년 트럼프 관세 전쟁 → 한국 자동차·반도체 수출 타격<br>
+          공급망 재편 → 베트남·인도 수혜, 중국·한국 일부 피해</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🪙 코인 -->
+  <div class="section" data-cat="coin" data-domain="stock">
+    <div class="section-header">🪙 코인 (암호화폐)</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-level="b" data-keywords="비트코인 btc bitcoin 반감기 사토시" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">비트코인 (BTC)</span><span class="term-en">Bitcoin</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">세계 최초·최대 암호화폐. 전체 코인 시장의 바로미터예요.<br>비트코인이 오르면 대부분의 코인도 따라 오르고, 내리면 같이 내려요.</div>
+        <div class="term-why"><div class="label">알아두면 좋은 점</div>총 발행량 2,100만 개로 정해져 있어요 (희소성)<br><strong>반감기</strong>: 4년마다 채굴 보상 절반 → 공급 감소 → 역사적으로 가격 상승<br>기관 ETF(IBIT 등)가 생기면서 주식처럼 투자 가능해짐</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-keywords="이더리움 ethereum eth 스마트컨트랙트 defi" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">이더리움 (ETH)</span><span class="term-en">Ethereum</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">비트코인 다음으로 큰 코인. <strong>스마트컨트랙트</strong> 기능으로 다양한 앱·금융 서비스 구동.<br>DeFi(탈중앙 금융), NFT, 웹3 플랫폼의 핵심 인프라예요.</div>
+        <div class="term-why"><div class="label">비트코인 vs 이더리움</div>
+          BTC: 디지털 금, 가치 저장 수단<br>
+          ETH: 디지털 플랫폼, 사용성이 핵심<br>
+          ETH/BTC 비율: 이더리움이 비트코인 대비 강한지 약한지 보여줌<br>
+          알트코인 시즌 오면 ETH가 BTC보다 더 강하게 오르는 경향</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-keywords="알트코인 altcoin 잡코인 솔라나 리플 이더리움" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">알트코인 (Altcoin)</span><span class="term-en">Alternative Coin</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">비트코인을 제외한 <strong>모든 암호화폐</strong>를 통칭해요.<br>이더리움, 솔라나(SOL), 리플(XRP), 에이다(ADA) 등이 대표적.</div>
+        <div class="term-why"><div class="label">알트코인 시즌이란?</div>
+          BTC가 먼저 오른 후 → 자금이 ETH로 → 이후 소형 알트코인으로 흘러가는 패턴<br>
+          알트시즌: BTC 도미넌스 하락 + 알트코인 전반 급등<br>
+          소형 알트코인: 단기 수익률 크지만 리스크도 훨씬 커요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-keywords="도미넌스 dominance btc점유율 알트시즌" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">BTC 도미넌스</span><span class="term-en">Bitcoin Dominance</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">전체 코인 시장에서 <strong>비트코인이 차지하는 비율</strong>이에요.<br>비트코인 시가총액 ÷ 전체 코인 시총 × 100</div>
+        <div class="term-why"><div class="label">어떻게 활용하나요?</div>
+          <div class="term-levels">
+            <span class="level l-good">도미넌스↑ = BTC 강세, 알트코인 상대적 약세</span>
+            <span class="level l-warn">도미넌스↓ = 알트코인 강세 (알트시즌 신호)</span>
+          </div><br>
+          공포 국면: 도미넌스 오름 (BTC로 도피)<br>
+          탐욕 국면: 도미넌스 내림 (알트로 자금 분산)</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-level="b" data-keywords="코인 공포탐욕 fear greed crypto" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">코인 공포·탐욕 지수</span><span class="term-en">Crypto Fear &amp; Greed Index</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">코인 시장의 심리를 0~100으로 표현해요.<br>주식 공포탐욕 지수와 따로 움직이는 경우가 많아요.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-bad">0~25 극도의 공포 → 역발상 매수</span>
+            <span class="level l-warn">26~45 공포</span>
+            <span class="level l-neu">46~55 중립</span>
+            <span class="level l-warn">56~75 탐욕</span>
+            <span class="level l-bad">76~100 극탐욕 → 고점 주의</span>
+          </div></div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-keywords="스테이블코인 stablecoin usdt usdc 테더" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">스테이블코인</span><span class="term-en">Stablecoin (USDT · USDC)</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">1달러에 고정된 <strong>가격 안정형 코인</strong>이에요.<br>USDT(테더), USDC(서클)가 대표적. 코인 거래소에서 현금처럼 사용해요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>
+          코인 시장 하락 시 USDT로 이동 → 안전하게 대기<br>
+          "스테이블 유동성 증가" = 시장에 매수 대기 자금 쌓임 → 반등 신호<br>
+          리스크: 달러 1:1 보증이 제대로 되는지 신뢰 문제</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-level="b" data-keywords="etf 비트코인etf ibit 기관 blackrock 피델리티" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">비트코인 현물 ETF</span><span class="term-en">Bitcoin Spot ETF</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">2024년 1월부터 허가된 상품. 비트코인을 <strong>주식처럼 증권 계좌에서 살 수 있게</strong> 해줘요.<br>블랙록(IBIT), 피델리티(FBTC) 등 대형 기관들이 운영해요.</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>기관 자금이 코인 시장에 들어오는 공식 창구가 생긴 것<br>ETF 유입액 많아질수록 → 비트코인 가격 상승 압력<br>"ETF 주간 유입 $1B" = 대형 기관이 1조원어치 매집했다는 뜻</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-keywords="고래 whale 대형 홀더 대량 매수 매도 온체인" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">고래 (Whale)</span><span class="term-en">Whale / Large Holder</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">코인을 <strong>대량 보유한 큰 손 투자자</strong>. 고래가 움직이면 시장이 크게 흔들려요.<br>보통 비트코인 100개(약 70억) 이상 보유자를 고래로 분류해요.</div>
+        <div class="term-why"><div class="label">어떻게 추적하나요?</div>
+          온체인(On-chain) 데이터: 블록체인은 모든 거래가 공개 → 고래 지갑 추적 가능<br>
+          "거래소 지갑으로 대량 이동" = 매도 준비 신호 → 주의<br>
+          "개인 콜드월렛으로 이동" = 장기 보유 신호 → 긍정</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="coin" data-keywords="반감기 halving 채굴 보상 절반 공급 감소" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">반감기 (Halving)</span><span class="term-en">Bitcoin Halving</span></div>
+        <div class="term-right"><span class="term-badge b-coin">코인</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">약 4년마다 비트코인 <strong>채굴 보상이 절반으로 줄어드는</strong> 이벤트예요.<br>공급이 줄어드니 이론적으로 가격 상승 압력이 생겨요.</div>
+        <div class="term-why"><div class="label">역사적 패턴</div>
+          2012년 반감기 후 → 1년 내 +8,000%<br>
+          2016년 반감기 후 → 1년 내 +2,800%<br>
+          2020년 반감기 후 → 1년 내 +700%<br>
+          2024년 4월 반감기 완료 → 2025~2026 상승 기대<br>
+          단, 과거 패턴이 반복된다는 보장은 없어요</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 📚 기초 -->
+  <div class="section" data-cat="basic" data-domain="stock">
+    <div class="section-header">📚 기초 개념</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-level="b" data-keywords="매수 매도 롱 숏 포지션" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">매수 / 매도 / 롱 / 숏</span><span class="term-en">Buy / Sell / Long / Short</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>매수(Buy/롱)</strong>: 주식·코인을 사는 것. 오를 거라 예상할 때.<br><strong>매도(Sell/숏)</strong>: 파는 것. 내릴 거라 예상하거나 이익을 실현할 때.</div>
+        <div class="term-why"><div class="label">롱 vs 숏 포지션</div>롱 포지션: 가격 오르길 기대하며 보유 중인 상태<br>숏 포지션: 가격 내릴 거라 베팅하는 것<br>"기관이 숏을 쳤다" = 기관이 하락에 베팅했다는 뜻</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-level="b" data-keywords="sl tp 손절 익절 스탑로스 목표가" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">SL / TP (손절 / 익절)</span><span class="term-en">Stop Loss / Take Profit</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>SL(손절)</strong>: 손해가 일정 수준 이상 나면 자동으로 파는 안전장치<br><strong>TP(익절)</strong>: 목표 수익에 도달하면 이익 실현하며 파는 것</div>
+        <div class="term-why"><div class="label">왜 꼭 필요한가요?</div>SL 없이 투자하면 → 손실이 무한정 커질 수 있어요<br>"SL $63K" = 비트코인이 $63,000 아래로 내리면 자동 매도<br>프로 투자자들이 가장 먼저 설정하는 것이 SL이에요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-level="b" data-keywords="분할매수 평균단가 물타기 dca dollar cost averaging" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">분할 매수 / DCA</span><span class="term-en">Dollar Cost Averaging</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">한 번에 다 사지 않고 <strong>여러 번에 나눠서 사는</strong> 전략이에요.<br>가격이 내려가면 더 싸게 살 수 있어서 평균 매입 단가를 낮출 수 있어요.</div>
+        <div class="term-why"><div class="label">언제 쓰나요?</div>"확신은 있지만 지금이 최저점인지 모를 때"<br>예) 총 100만원 계획 → 25만원씩 4번에 나눠서<br>물타기와 다른 점: 미리 계획한 구간에서만 매수</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-keywords="포트폴리오 분산투자 portfolio diversification 자산배분" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">포트폴리오 / 분산투자</span><span class="term-en">Portfolio / Diversification</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>포트폴리오</strong>: 내가 보유한 모든 자산의 묶음<br><strong>분산투자</strong>: 달걀을 한 바구니에 담지 않는 것 — 여러 자산에 나눠서 투자</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>
+          한 종목에 몰빵 → 그 종목이 망하면 전부 잃어요<br>
+          분산 예시: 주식 60% + 채권 30% + 금 10%<br>
+          상관관계 낮은 자산끼리 묶으면 → 한쪽 하락해도 다른 쪽이 방어</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-keywords="리밸런싱 rebalancing 자산배분 비중조절" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">리밸런싱</span><span class="term-en">Rebalancing</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">시간이 지나 자산 비율이 변하면 <strong>원래 계획한 비율로 다시 맞추는</strong> 작업.</div>
+        <div class="term-why"><div class="label">예시</div>
+          처음: 주식 60% / 채권 40%<br>
+          1년 후 주식이 많이 올라: 주식 80% / 채권 20%<br>
+          리밸런싱: 주식 일부 팔아 → 채권 매수 → 60/40 복원<br>
+          분기 또는 연 1~2회 정기 리밸런싱이 장기적으로 유리해요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-keywords="레버리지 etf tqqq soxl 2배 3배" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">레버리지 ETF (TQQQ·SOXL)</span><span class="term-en">Leveraged ETF</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">지수의 <strong>2배 또는 3배로 움직이도록</strong> 설계된 상품이에요.<br>나스닥이 +1% 오르면 TQQQ(3배)는 +3%, -1% 내리면 -3%예요.</div>
+        <div class="term-why"><div class="label">주의사항</div>수익도 3배지만 손실도 3배<br>장기 보유 시 복리 손실(변동성 끌림) 발생<br>상승장에서 단기 사용하는 도구 — 초보자에게는 권장하지 않아요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-keywords="변동성 베타 volatility beta 위험 리스크" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">변동성 / 베타 (β)</span><span class="term-en">Volatility / Beta</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>변동성</strong>: 주가가 얼마나 크게 오르내리는지의 정도<br><strong>베타(β)</strong>: 시장 대비 주가 민감도. 베타 2 = 시장보다 2배 흔들림</div>
+        <div class="term-why"><div class="label">어떻게 활용하나요?</div>
+          베타 1.0 이상 → 시장보다 많이 오르고 많이 내려 (공격형)<br>
+          베타 0.5 이하 → 시장 움직임의 절반만 반응 (방어형)<br>
+          변동성 낮은 자산: 채권·금·유틸리티 주<br>
+          변동성 높은 자산: 코인·소형주·바이오주</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-keywords="헤지 hedge 위험 방어 보험 인버스" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">헤지 (Hedge)</span><span class="term-en">Hedge / Hedging</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">손실 위험을 줄이기 위해 <strong>반대 방향으로 포지션을 취하는</strong> 전략.<br>보험처럼, 원래 투자에서 손실이 나면 헤지 포지션에서 수익이 나요.</div>
+        <div class="term-why"><div class="label">헤지 방법 예시</div>
+          주식 많이 들고 있을 때 → 인버스 ETF 소량 매수<br>
+          달러 자산 많을 때 → 원화 자산으로 환헤지<br>
+          비트코인 보유 중 → 선물 숏 포지션으로 가격 하락 방어<br>
+          헤지는 수익을 줄이지만 리스크도 줄여줘요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="basic" data-keywords="포지션 사이징 position sizing 투자비중 배분" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">포지션 사이징</span><span class="term-en">Position Sizing</span></div>
+        <div class="term-right"><span class="term-badge b-basic">기초</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">하나의 거래에 <strong>얼마를 투입할지 결정</strong>하는 것. 가장 중요한 리스크 관리 기술이에요.</div>
+        <div class="term-why"><div class="label">황금 법칙</div>
+          한 거래에 전체 자금의 최대 2~5%만 투입<br>
+          "1%룰": 한 거래에서 최대 손실 = 총 자산의 1%<br>
+          예) 총 자산 1,000만원 → 한 종목에서 최대 손실 10만원<br>
+          → 손절 5% = 해당 종목에 200만원까지만 투자</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 📈 기술적 분석 -->
+  <div class="section" data-cat="tech" data-domain="stock">
+    <div class="section-header">📈 기술적 분석 (차트 보는 법)</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="rsi 상대강도지수 과매수 과매도 overbought oversold" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">RSI (상대강도지수)</span><span class="term-en">Relative Strength Index</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">주가가 <strong>너무 많이 올랐는지(과매수), 너무 많이 떨어졌는지(과매도)</strong>를 0~100으로 표현해요.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-bad">70↑ 과매수 → 조정 가능성</span>
+            <span class="level l-neu">30~70 중립 구간</span>
+            <span class="level l-good">30↓ 과매도 → 반등 기대</span>
+          </div><br>
+          RSI 단독으로 매수·매도 결정 금지 — 다른 지표와 함께 사용<br>
+          강한 상승 추세에서는 RSI 70 이상이어도 계속 오를 수 있어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="이동평균선 ma ema 5일선 20일선 50일선 200일선 골든크로스 데드크로스" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">이동평균선 (MA · EMA)</span><span class="term-en">Moving Average</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">일정 기간의 <strong>평균 주가를 연결한 선</strong>이에요. 추세 방향을 파악하는 가장 기본적인 도구.</div>
+        <div class="term-why"><div class="label">주요 이동평균선</div>
+          <strong>5일선</strong>: 초단기 추세<br>
+          <strong>20일선</strong>: 단기 추세 (가장 많이 사용)<br>
+          <strong>50일선</strong>: 중기 추세<br>
+          <strong>200일선</strong>: 장기 추세 (이 위에 있으면 전체적 상승장)<br>
+          EMA(지수이동평균): 최근 데이터에 더 가중치 → MA보다 빠르게 반응</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="골든크로스 데드크로스 golden cross dead cross 매수 신호 매도 신호" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">골든크로스 / 데드크로스</span><span class="term-en">Golden Cross / Dead Cross</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>골든크로스</strong>: 단기선(50일)이 장기선(200일)을 위로 돌파 → 강세 신호<br><strong>데드크로스</strong>: 단기선이 장기선을 아래로 돌파 → 약세 신호</div>
+        <div class="term-why"><div class="label">주의사항</div>
+          발생 후 뒤늦게 확인되는 후행 지표 → 실제 매수·매도는 이미 늦을 수 있어요<br>
+          뉴스에서 "골든크로스 발생"이라고 하면 이미 많이 오른 이후일 확률이 높아요<br>
+          장기 추세 확인 용도로 활용하는 것이 좋아요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="지지선 저항선 support resistance 박스권" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">지지선 / 저항선</span><span class="term-en">Support / Resistance Level</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>지지선</strong>: 주가가 내려가다 멈추고 반등하는 가격대 (바닥)<br><strong>저항선</strong>: 주가가 올라가다 막히는 가격대 (천장)</div>
+        <div class="term-why"><div class="label">왜 작동하나요?</div>
+          심리적 이유: 많은 투자자들이 같은 가격대에서 매수·매도<br>
+          저항선 돌파 → 저항이 지지로 바뀌는 경향 (중요 포인트)<br>
+          "박스권": 지지선과 저항선 사이에서 횡보하는 구간<br>
+          박스권 상단 돌파 → 강한 상승 신호</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="피보나치 fibonacci 되돌림 retracement 38.2 61.8 황금비율" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">피보나치 되돌림</span><span class="term-en">Fibonacci Retracement</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">주가가 큰 폭으로 오르거나 내린 후 <strong>얼마나 되돌아갈지</strong> 예측하는 도구.<br>황금 비율(23.6%, 38.2%, 61.8%)을 기반으로 해요.</div>
+        <div class="term-why"><div class="label">실제 활용 예시</div>
+          비트코인 $30K → $70K 상승 후 조정<br>
+          피보 38.2% 되돌림 = $54K 지지 예상<br>
+          피보 61.8% 되돌림 = $45K 지지 예상<br>
+          이 가격대에서 많은 트레이더들이 매수하기 때문에 실제로 반응하는 경향이 있어요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="macd 시그널 히스토그램 모멘텀 추세" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">MACD</span><span class="term-en">Moving Average Convergence Divergence</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">두 이동평균선의 차이로 <strong>추세의 방향과 강도</strong>를 보여줘요.<br>히스토그램이 0 위면 상승 모멘텀, 0 아래면 하락 모멘텀.</div>
+        <div class="term-why"><div class="label">매수·매도 신호</div>
+          MACD선이 시그널선을 <strong>위로 돌파</strong> → 매수 신호<br>
+          MACD선이 시그널선을 <strong>아래로 돌파</strong> → 매도 신호<br>
+          0선 위에서 골든크로스: 강한 매수 / 0선 아래에서 데드크로스: 강한 매도<br>
+          RSI와 함께 사용하면 신뢰도 올라가요</div>
+      </div>
+
+      <div class="term-row" data-domain="stock" data-cat="tech" data-keywords="볼린저밴드 bollinger bands 밴드 표준편차 과매수 과매도" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">볼린저 밴드</span><span class="term-en">Bollinger Bands</span></div>
+        <div class="term-right"><span class="term-badge b-tech">기술적 분석</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">20일 이동평균선 위아래로 <strong>변동성 범위를 표시한 3개의 선</strong>이에요.<br>밴드가 좁아지면 → 곧 큰 변동 예고. 넓어지면 → 현재 변동성 큼.</div>
+        <div class="term-why"><div class="label">활용법</div>
+          주가가 상단 밴드 터치 → 과매수 가능성 → 매도 고려<br>
+          주가가 하단 밴드 터치 → 과매도 가능성 → 매수 고려<br>
+          밴드 수축(squeeze) → 곧 큰 방향성 이탈 예고<br>
+          하단 밴드 이탈 후 복귀 = "반등 W패턴" 신호</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- ========== 부동산 ========== -->
+  <!-- ═══════════════════════════════════ -->
+
+  <!-- 📋 임대차 기초 -->
+  <div class="section" data-cat="r-basic" data-domain="realty">
+    <div class="section-header">📋 임대차 기초</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-level="b" data-keywords="전세 월세 반전세 보증금 임대차" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">전세 / 월세 / 반전세</span><span class="term-en">Jeonse / Monthly Rent</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>전세</strong>: 목돈(보증금)을 맡기고 2년간 무료 거주. 계약 종료 시 전액 반환.<br><strong>월세</strong>: 매달 일정 금액 지불. 보증금은 적음.<br><strong>반전세</strong>: 전세 보증금 일부 + 매달 소액 월세.</div>
+        <div class="term-why"><div class="label">최근 이슈</div>
+          금리 오르면 → 집주인이 전세 이자 수입 감소 → 월세 선호<br>
+          전세 → 월세 전환율 증가 중<br>
+          전세사기: 집주인이 보증금 못 돌려주는 사고 → 반드시 전세보증보험 가입 권장</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-level="b" data-keywords="전세보증보험 hug sgi 서울보증 반환보증 전세사기" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">전세보증보험</span><span class="term-en">Jeonse Deposit Insurance (HUG·SGI)</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">집주인이 보증금을 <strong>못 돌려줄 경우 보증기관이 대신 돌려주는</strong> 보험.<br>전세사기가 급증하면서 필수 안전장치로 자리잡았어요.</div>
+        <div class="term-why"><div class="label">두 기관 차이</div>
+          <strong>HUG</strong>(주택도시보증공사): 공공 기관, 보증료 저렴, 일반 아파트 가입 쉬움<br>
+          <strong>SGI서울보증</strong>: 민간, 조건 까다롭지만 다세대·빌라도 가입 가능<br>
+          가입 조건: 전세가율 90% 이하, 근저당 없는 집 (또는 전세금 &gt; 근저당)<br>
+          연간 보증료: 전세금의 0.1~0.15% (보통 수십만원 수준)</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-level="b" data-keywords="등기부등본 권리관계 소유권 근저당 가압류 확인" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">등기부등본</span><span class="term-en">Certified Copy of Registry</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">그 집의 <strong>소유권·권리관계를 공식으로 증명</strong>하는 서류.<br>부동산 거래 전 <strong>반드시 확인해야 하는 1순위 문서</strong>예요.</div>
+        <div class="term-why"><div class="label">체크 포인트</div>
+          <strong>갑구</strong>: 소유권 이력 — 집주인이 맞는지 확인<br>
+          <strong>을구</strong>: 근저당·가압류·전세권 — 빚 기록 확인<br>
+          근저당 설정액이 집값의 60% 이상 → 위험 신호<br>
+          가압류·경매 기재 → 전세 들어가면 보증금 못 받을 위험<br>
+          인터넷등기소에서 1,000원에 발급 가능 (iros.go.kr)</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-level="b" data-keywords="전용면적 공급면적 전용률 평수 제곱미터 서비스면적" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">전용면적 / 공급면적 / 전용률</span><span class="term-en">Net Area / Supply Area / Utilization Rate</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>전용면적</strong>: 실제로 우리 집 현관 안쪽 면적 (거실·방·주방·화장실)<br><strong>공급면적</strong>: 전용면적 + 복도·계단 등 공용<br><strong>전용률</strong>: 공급면적 대비 전용면적 비율</div>
+        <div class="term-why"><div class="label">알아두면 좋은 점</div>
+          국민평형 84㎡(34평): 전용 84㎡ + 공용 ≈ 공급 109㎡<br>
+          전용률 75~80% = 아파트 평균<br>
+          전용률 85%+ = 공간 효율 좋음<br>
+          오피스텔 전용률은 보통 50~60% (상대적으로 낮음)<br>
+          발코니(서비스면적): 전용면적에 포함 안 됨 — 확장 시 실제 사용 면적 증가</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-level="b" data-keywords="kb시세 실거래가 호가 시세 부동산 가격" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">KB시세 / 실거래가 / 호가</span><span class="term-en">KB Price Index / Actual Transaction Price</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>KB시세</strong>: KB국민은행이 집계하는 아파트 시세. 대출 기준으로 많이 사용.<br><strong>실거래가</strong>: 실제로 거래된 가격. 국토부 실거래가 공개 시스템에서 확인.<br><strong>호가</strong>: 집주인이 팔고 싶은 가격 (실거래가와 다를 수 있음)</div>
+        <div class="term-why"><div class="label">어떻게 활용하나요?</div>
+          실거래가 확인 → 지금 이 동네 아파트가 실제로 얼마에 팔리는지<br>
+          KB시세 &gt; 실거래가: 시장이 약세 (호가 낮춰야 팔림)<br>
+          실거래가 상승 → 시장 회복 신호<br>
+          국토부 실거래가 공개 시스템: rt.molit.go.kr</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-level="b" data-keywords="임장 현장답사 부동산 발품 매물 확인" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">임장 (현장 답사)</span><span class="term-en">Property Site Visit</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">부동산 매매·임대 전에 <strong>직접 현장을 가서 확인</strong>하는 것. 부동산 투자의 기본.<br>"발품 팔기"라고도 해요.</div>
+        <div class="term-why"><div class="label">임장 체크리스트</div>
+          ✅ 채광·방향·소음 (해 방향, 도로변 여부)<br>
+          ✅ 주차 공간 / 엘리베이터 상태<br>
+          ✅ 누수·곰팡이·결로 흔적<br>
+          ✅ 주변 편의시설 (마트·병원·버스정류장)<br>
+          ✅ 학군·학세권 여부<br>
+          ✅ 주변 공사 계획 (혐오시설·개발 예정)<br>
+          ✅ 출퇴근 시간대 교통량<br>
+          낮·저녁·주말 3번은 가보는 것이 이상적</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-keywords="역전세 깡통전세 전세사기 보증금 반환 미반환" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">역전세 / 깡통전세</span><span class="term-en">Reverse Jeonse / Underwater Jeonse</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>역전세</strong>: 전세 시세가 계약 당시보다 내려 → 집주인이 보증금 일부 돌려줘야 하는 상황<br><strong>깡통전세</strong>: 집값보다 전세금이 더 많아진 상황</div>
+        <div class="term-why"><div class="label">어떻게 예방하나요?</div>
+          전세보증보험(HUG·SGI서울보증) 가입 필수<br>
+          전입신고 + 확정일자 받기 (대항력 확보)<br>
+          집주인 근저당·세금 체납 여부 확인<br>
+          전세가율 80% 이상이면 위험 신호 — 신중하게</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-basic" data-keywords="전세가율 매매가 전세 비율 갭투자 위험" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">전세가율</span><span class="term-en">Jeonse-to-Sale Ratio</span></div>
+        <div class="term-right"><span class="term-badge b-realty">임대차</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">매매가 대비 전세가의 비율. <strong>전세가 ÷ 매매가 × 100</strong><br>부동산 시장 상태를 한눈에 파악할 수 있는 핵심 지표.</div>
+        <div class="term-why"><div class="label">어떻게 읽나요?</div>
+          <div class="term-levels">
+            <span class="level l-good">60% 이하 — 안정적</span>
+            <span class="level l-warn">70~80% — 갭투자 활발</span>
+            <span class="level l-bad">90%+ — 깡통전세 위험</span>
+          </div><br>
+          전세가율 높음 → 갭투자 유리 but 세입자 위험<br>
+          전세가율 낮음 → 매매 시장 과열 or 전세 공급 부족<br>
+          지역별 평균 확인: 서울 아파트 50~60%, 빌라 70~90%</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 💰 대출·규제 -->
+  <div class="section" data-cat="r-loan" data-domain="realty">
+    <div class="section-header">💰 대출 · 규제</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="realty" data-cat="r-loan" data-level="b" data-keywords="ltv dti dsr 대출규제 담보대출 주담대" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">LTV / DTI / DSR</span><span class="term-en">Loan-To-Value / Debt-To-Income</span></div>
+        <div class="term-right"><span class="term-badge b-realty">대출·규제</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">은행이 집 살 때 돈을 <strong>얼마나 빌려줄지</strong> 규제하는 3가지 기준이에요.</div>
+        <div class="term-why"><div class="label">쉽게 설명하면</div>
+          <strong>LTV</strong>(담보인정비율): 집 가격의 몇 %까지 빌려줄 수 있나<br>
+          → 5억 짜리 집, LTV 70% = 최대 3.5억 대출<br>
+          <strong>DTI</strong>(총부채상환비율): 연소득 대비 연간 원리금 상환액 비율<br>
+          <strong>DSR</strong>(총부채원리금상환비율): 모든 대출 원리금 ÷ 연소득. 가장 강력한 규제<br>
+          → 규제 강화 = 대출 어려움 = 집값 하락 압력</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-loan" data-level="b" data-keywords="주담대 주택담보대출 전세대출 보금자리론 특례 디딤돌" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">주담대 / 전세대출</span><span class="term-en">Mortgage / Jeonse Loan</span></div>
+        <div class="term-right"><span class="term-badge b-realty">대출·규제</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>주담대</strong>(주택담보대출): 집을 담보로 빌리는 대출. 집 사거나 소유 중 자금 융통.<br><strong>전세대출</strong>: 전세 보증금 마련을 위한 대출. 보증기관 보증 필수.</div>
+        <div class="term-why"><div class="label">정책 대출 종류</div>
+          <strong>보금자리론</strong>: 서민 실수요자용, 고정금리, 최대 3.6억<br>
+          <strong>디딤돌대출</strong>: 생애최초·신혼부부, 저금리, 최대 2.5억<br>
+          <strong>버팀목전세자금대출</strong>: 청년·신혼부부 전세 대출, 저금리<br>
+          시중은행 주담대 금리보다 0.5~1.5%p 낮음 — 조건 맞으면 우선 활용</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-loan" data-level="b" data-keywords="청약 분양권 당첨 공공분양 민간분양 청약통장" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">청약 / 분양권</span><span class="term-en">Housing Subscription / Presale Rights</span></div>
+        <div class="term-right"><span class="term-badge b-realty">대출·규제</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>청약</strong>: 새로 짓는 아파트를 시세보다 싸게 살 수 있는 신청 제도.<br><strong>분양권</strong>: 청약에 당첨돼서 입주할 권리. 프리미엄(웃돈) 붙으면 전매 가능.</div>
+        <div class="term-why"><div class="label">핵심 포인트</div>
+          청약통장 가입기간·납입횟수가 당락 좌우<br>
+          1순위 조건: 지역·가입기간 기준 충족<br>
+          분양가 상한제: 분양가를 시세보다 낮게 제한 → 로또 청약 탄생<br>
+          전매제한: 청약 당첨 후 일정 기간 팔 수 없는 규제</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-loan" data-keywords="분양가 상한제 분양가상한제 시세 로또청약 규제" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">분양가 상한제</span><span class="term-en">Price Cap on New Housing</span></div>
+        <div class="term-right"><span class="term-badge b-realty">대출·규제</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">신규 아파트 분양가를 <strong>주변 시세보다 낮게 제한</strong>하는 제도.<br>주택 가격 안정과 실수요자 보호가 목적이에요.</div>
+        <div class="term-why"><div class="label">효과 & 부작용</div>
+          효과: 분양가 낮음 → 당첨자 큰 시세차익 (로또 청약)<br>
+          부작용: 청약 경쟁률 폭등 (수백대1)<br>
+          부작용: 건설사 수익 감소 → 공급 축소 우려<br>
+          전매제한 강화: 8~10년 전매금지 + 실거주 의무 2~5년<br>
+          해제되면 → 분양가 급등, 청약 열기 감소</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-loan" data-keywords="조정대상지역 투기과열지구 규제지역 해제 지정 대출규제" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">조정대상지역 / 투기과열지구</span><span class="term-en">Adjustment Target Zone / Speculative Zone</span></div>
+        <div class="term-right"><span class="term-badge b-realty">대출·규제</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">집값 급등 지역에 <strong>대출·세금 규제를 강화</strong>하는 지정 구역이에요.</div>
+        <div class="term-why"><div class="label">규제 강도</div>
+          <strong>조정대상지역</strong>: LTV·DTI 40% 하향, 양도세 중과, 다주택자 취득세 중과<br>
+          <strong>투기과열지구</strong>: LTV 40% 또는 20%, 분양권 전매 금지, 재건축 조합원 지위 양도 금지<br>
+          2025~2026년 규제 완화 흐름: 대부분 지역 해제 → 강남3구·용산만 유지<br>
+          규제 해제 시 → 해당 지역 거래·가격 상승 가능성</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-loan" data-keywords="토지거래허가구역 규제 강남 송파 투기 허가" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">토지거래허가구역</span><span class="term-en">Land Transaction Permission Zone</span></div>
+        <div class="term-right"><span class="term-badge b-realty">대출·규제</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">특정 지역에서 부동산을 살 때 <strong>지자체 허가가 필요한</strong> 규제 구역이에요.<br>실거주 목적이 아니면 매수 불가. 갭투자 차단이 목적.</div>
+        <div class="term-why"><div class="label">실제 영향</div>
+          지정: 해당 지역 거래량 급감 → 일시적 가격 하락 or 관망<br>
+          해제: 대기 수요 유입 → 거래량·가격 급등 가능<br>
+          2025년 강남3구·용산 지정 → 2024년 해제 → 거래 급증<br>
+          "토허제 해제 기대감"만으로 미리 가격 오르기도 해요</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 📊 투자·시세 -->
+  <div class="section" data-cat="r-invest" data-domain="realty">
+    <div class="section-header">📊 투자 · 시세</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="realty" data-cat="r-invest" data-keywords="갭투자 갭 전세 레버리지 투자 집값" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">갭투자</span><span class="term-en">Gap Investment</span></div>
+        <div class="term-right"><span class="term-badge b-realty">투자·시세</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">집값과 전세가의 차이(갭)만큼만 돈을 내고 집을 사는 투자법.<br>예) 집값 6억, 전세 5억 → 1억만 내고 집 구입 후 가격 상승 기대</div>
+        <div class="term-why"><div class="label">리스크</div>
+          집값이 오르면 큰 수익 → 오를 때 유행<br>
+          전세가가 집값에 근접하면 역전세 위험<br>
+          집값 하락 + 전세금 반환 요구 → 깡통전세·보증금 미반환 사고 발생<br>
+          2022~2023년 역전세 사태로 많은 피해 발생</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-invest" data-keywords="입주물량 미분양 공급 과잉 부족 수요" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">입주물량 / 미분양</span><span class="term-en">New Supply / Unsold Units</span></div>
+        <div class="term-right"><span class="term-badge b-realty">투자·시세</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>입주물량</strong>: 앞으로 특정 지역에 공급될 아파트 수<br><strong>미분양</strong>: 분양했는데 아직 팔리지 않은 물량</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>
+          입주물량 많음 → 공급 과잉 → 집값·전세가 하락 압력<br>
+          미분양 증가 → 시장 침체 신호<br>
+          전국 미분양 7만 호 이상 = 경고 수준<br>
+          수도권 입주물량 감소 → 2~3년 후 공급 부족 → 집값 상승 선행 지표</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-invest" data-keywords="오피스텔 주거용 업무용 투자 수익률 전환" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">오피스텔 투자</span><span class="term-en">Officetel Investment</span></div>
+        <div class="term-right"><span class="term-badge b-realty">투자·시세</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">주거와 업무가 모두 가능한 <strong>복합 부동산</strong>.<br>아파트보다 저렴하게 시작해서 임대 수익 내기에 인기.</div>
+        <div class="term-why"><div class="label">장단점 체크</div>
+          <strong>장점</strong>: 초기 자금 적음, 임대 수요 꾸준, 전용률 낮지만 위치 좋음<br>
+          <strong>단점</strong>: 시세 상승률 낮음, 전용률 낮음(50~60%), 관리비 비쌈<br>
+          주거용 오피스텔: 주택 수 포함 → 세금 주의<br>
+          업무용: 주택 수 제외 but 전세자금대출 불가<br>
+          기대수익률: 월세 기준 연 4~6%</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-invest" data-keywords="상가 투자 임대수익률 공실 리스크 권리금" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">상가 투자 / 임대수익률</span><span class="term-en">Commercial Real Estate Yield</span></div>
+        <div class="term-right"><span class="term-badge b-realty">투자·시세</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">상가를 사서 <strong>임대료 수익을 얻는</strong> 투자 방식이에요.<br>주택과 달리 수익률이 핵심 기준.</div>
+        <div class="term-why"><div class="label">수익률 계산 & 리스크</div>
+          <strong>연 임대수익률</strong>: (월세 × 12) ÷ 매매가 × 100<br>
+          서울 상가 평균 연 3~5% / 지방 5~7%<br>
+          <strong>리스크</strong>: 공실(세입자 없을 때 수익 0), 경기 침체 직격, 권리금 분쟁<br>
+          좋은 상가: 1층 코너, 유동인구 많은 곳, 지하철 출구 근처<br>
+          피해야 할 곳: 쇠퇴 중인 상권, 주차 부족, 경쟁 상가 과다</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-invest" data-keywords="경매 공매 부동산 낙찰 응찰 감정가 명도" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">경매 / 공매</span><span class="term-en">Auction / Public Sale</span></div>
+        <div class="term-right"><span class="term-badge b-realty">투자·시세</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>경매</strong>: 법원이 채무자 재산을 강제 매각 (돈 못 갚을 때)<br><strong>공매</strong>: 국가·공공기관이 체납 재산을 매각</div>
+        <div class="term-why"><div class="label">장점 & 주의사항</div>
+          <strong>장점</strong>: 시세 대비 70~90%에 낙찰 가능 → 큰 할인<br>
+          <strong>주의</strong>: 권리분석 필수 (대항력 있는 세입자 → 명도 어려움)<br>
+          <strong>주의</strong>: 명도(기존 거주자 내보내기) 시간·비용 발생<br>
+          <strong>주의</strong>: 물건 상태 확인 불가 → 심각한 하자 있을 수도<br>
+          초보는 권리분석 전문가 / 경매 컨설팅 활용 권장</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏗️ 개발·공급 -->
+  <div class="section" data-cat="r-dev" data-domain="realty">
+    <div class="section-header">🏗️ 개발 · 공급</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="realty" data-cat="r-dev" data-keywords="재개발 재건축 리모델링 조합 입주권 정비사업" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">재개발 / 재건축</span><span class="term-en">Redevelopment / Reconstruction</span></div>
+        <div class="term-right"><span class="term-badge b-realty">개발·공급</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>재개발</strong>: 낡은 단독주택·빌라 지역을 허물고 아파트로 새로 짓는 것<br><strong>재건축</strong>: 오래된 아파트를 허물고 더 큰 아파트로 새로 짓는 것</div>
+        <div class="term-why"><div class="label">투자 관점</div>
+          조합설립 → 사업인가 → 이주·철거 → 착공 → 입주 (보통 10~15년)<br>
+          초기 매입 → 사업 진행될수록 가치 상승<br>
+          재건축초과이익환수제: 이익의 일부를 국가가 환수<br>
+          안전진단 통과 여부가 재건축의 가장 중요한 관문</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-dev" data-keywords="안전진단 재건축초과이익환수제 D등급 E등급 조건부" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">안전진단 / 초과이익환수제</span><span class="term-en">Safety Inspection / Excess Profit Recovery</span></div>
+        <div class="term-right"><span class="term-badge b-realty">개발·공급</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>안전진단</strong>: 재건축 전에 건물 안전도 평가. D~E등급 받아야 재건축 가능.<br><strong>초과이익환수제</strong>: 재건축으로 번 시세차익의 일부를 국가가 환수.</div>
+        <div class="term-why"><div class="label">재건축 성패 결정</div>
+          안전진단 통과 = 재건축 본격화 신호 → 주변 가격 급등<br>
+          A~C등급: 재건축 불가, 리모델링만 가능<br>
+          D등급: 조건부 재건축<br>
+          E등급: 즉시 재건축 가능<br>
+          초과이익환수: 1인당 평균 이익의 최대 50%까지 환수 → 재건축 유인 감소</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-dev" data-keywords="선분양 후분양 분양 완공 입주 모델하우스" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">선분양 / 후분양</span><span class="term-en">Pre-sale / Post-sale</span></div>
+        <div class="term-right"><span class="term-badge b-realty">개발·공급</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>선분양</strong>: 착공 전·공사 중에 미리 분양 (한국 90% 이상)<br><strong>후분양</strong>: 공사 80% 이상 완료 후 분양 (완공 상태 보고 구매)</div>
+        <div class="term-why"><div class="label">장단점</div>
+          <strong>선분양 장점</strong>: 분양가 저렴, 2~3년 거주 계획 세우기 좋음<br>
+          <strong>선분양 단점</strong>: 완공까지 3년 대기, 실제 모습 못 봄, 부실시공 리스크<br>
+          <strong>후분양 장점</strong>: 실물 확인, 시공 품질 검증, 즉시 입주<br>
+          <strong>후분양 단점</strong>: 분양가 높음, 대출 한 번에 많이 필요<br>
+          최근 부실시공 문제로 후분양 확대 논의 중</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-dev" data-keywords="용적률 건폐율 연면적 대지 규제 고도제한" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">용적률 / 건폐율</span><span class="term-en">Floor Area Ratio / Building Coverage Ratio</span></div>
+        <div class="term-right"><span class="term-badge b-realty">개발·공급</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>용적률</strong>: 대지 면적 대비 <strong>전체 건물 연면적</strong> 비율 → 몇 층까지 지을 수 있는지<br><strong>건폐율</strong>: 대지 면적 대비 <strong>건물 1층 바닥</strong> 비율 → 땅 얼마나 덮는지</div>
+        <div class="term-why"><div class="label">왜 중요한가요?</div>
+          용적률 높음 → 고층 건물 가능 → 더 많은 세대 공급 → 땅값 상승<br>
+          1종 일반주거 150% / 2종 200% / 3종 250% / 준주거 500%<br>
+          재건축 시 용적률 상향 허가 → 수익성 대폭 개선<br>
+          용적률 200% → 300%로 상향 = 조합원 분담금 감소 + 일반분양 증가<br>
+          건폐율은 보통 60% 이하 (쾌적성 확보)</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-dev" data-keywords="gtx 지하철 역세권 학세권 인프라 개발계획 교통" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">역세권 / GTX / 교통 호재</span><span class="term-en">Subway Access / Transit Hub</span></div>
+        <div class="term-right"><span class="term-badge b-realty">개발·공급</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>역세권</strong>: 지하철역 반경 500m 이내.<br><strong>GTX</strong>(수도권광역급행철도): 수도권 주요 거점을 빠르게 연결하는 급행 철도.</div>
+        <div class="term-why"><div class="label">가격에 미치는 영향</div>
+          신규 노선 착공 → 주변 집값 10~30% 상승<br>
+          개통 임박 → 추가 상승<br>
+          GTX-A(운정↔동탄): 2024 개통, 수도권 시세 지형 변화<br>
+          GTX-B(송도↔마석): 2030 예정 → 인천·남양주 주목<br>
+          GTX-C(덕정↔수원): 2028 예정 → 의정부·수원 주목<br>
+          개발 발표 &gt; 착공 &gt; 개통 단계별로 가격 상승 → 타이밍 중요</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 🏛️ 세금·제도 -->
+  <div class="section" data-cat="r-tax" data-domain="realty">
+    <div class="section-header">🏛️ 세금 · 제도</div>
+    <div class="term-group">
+
+      <div class="term-row" data-domain="realty" data-cat="r-tax" data-level="b" data-keywords="취득세 양도세 보유세 재산세 부동산세금" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">취득세 / 양도세 / 보유세</span><span class="term-en">Acquisition / Capital Gains / Holding Tax</span></div>
+        <div class="term-right"><span class="term-badge b-realty">세금·제도</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">부동산 <strong>살 때·팔 때·보유 중</strong> 내는 세금 3종 세트예요.</div>
+        <div class="term-why"><div class="label">각 세금 개요</div>
+          <strong>취득세</strong>(살 때): 주택 가액의 1~3% (6억 이하 1%, 9억 이상 3%)<br>
+          → 다주택자·법인은 8~12% 중과<br>
+          <strong>양도세</strong>(팔 때): 시세차익의 6~45% (보유기간 짧을수록 높음)<br>
+          → 1주택 비과세 요건: 2년 이상 보유·거주<br>
+          <strong>보유세</strong>: 재산세 + 종합부동산세<br>
+          → 공시가격 기준으로 매년 부과</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-tax" data-level="b" data-keywords="종부세 종합부동산세 고가주택 다주택 기준" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">종합부동산세 (종부세)</span><span class="term-en">Comprehensive Real Estate Tax</span></div>
+        <div class="term-right"><span class="term-badge b-realty">세금·제도</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">공시가격 <strong>고가·다주택자</strong>에게 추가로 부과되는 세금.<br>재산세 위에 얹어서 부과되는 부유세 성격.</div>
+        <div class="term-why"><div class="label">과세 기준</div>
+          <strong>1주택자</strong>: 공시가격 12억 초과분에 대해 과세<br>
+          <strong>다주택자</strong>: 공시가격 합산 9억 초과분 과세<br>
+          세율: 0.5~5% (보유 호수·공시가격에 따라 누진)<br>
+          다주택 중과: 조정대상지역 2주택 이상 시 세율 대폭 인상<br>
+          매년 6월 1일 기준 보유자에게 12월 부과<br>
+          2023~2024년 세법 개정으로 세부담 다소 완화</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-tax" data-keywords="공시가격 공시지가 시세 세금 재산세 종부세 기준" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">공시가격 / 공시지가</span><span class="term-en">Official Assessed Price</span></div>
+        <div class="term-right"><span class="term-badge b-realty">세금·제도</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">정부가 공식적으로 정한 <strong>부동산 가격 기준</strong>. 실거래가와 달라요.<br>재산세·종합부동산세·건강보험료 등 각종 세금의 기준이 돼요.</div>
+        <div class="term-why"><div class="label">알아두면 좋은 점</div>
+          공시가격 현실화율: 실거래가 대비 공시가격 비율 (보통 70~80%)<br>
+          공시가격 오르면 → 재산세·종부세 부담 증가<br>
+          공시가격 하락 → 세금 부담 감소<br>
+          매년 1월(토지) / 4월(주택) 발표</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-tax" data-keywords="계약갱신청구권 전월세상한제 임차인 권리 임대차3법" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">계약갱신청구권 / 전월세상한제</span><span class="term-en">Lease Renewal Right / Rent Cap</span></div>
+        <div class="term-right"><span class="term-badge b-realty">세금·제도</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc"><strong>계약갱신청구권</strong>: 세입자가 2년 계약 후 1회에 한해 2년 더 연장 요구 가능 (임대인 거부 제한)<br><strong>전월세상한제</strong>: 갱신 시 전세·월세 인상률 5% 이내로 제한</div>
+        <div class="term-why"><div class="label">2020년 임대차3법 도입 효과</div>
+          단기: 세입자 보호 강화<br>
+          부작용: 집주인이 신규 계약 시 전세가 대폭 인상 (선반영)<br>
+          4년 후(2024~) 임대차3법 계약 만료 → 전세가 급등 우려 현실화<br>
+          임차인: 계약갱신 사용 여부 전략적으로 결정 필요</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-tax" data-keywords="금리 부동산 집값 관계 주담대 금리 상승 하락" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">금리와 부동산 관계</span><span class="term-en">Interest Rate &amp; Real Estate</span></div>
+        <div class="term-right"><span class="term-badge b-realty">세금·제도</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">금리는 부동산 시장에 <strong>가장 큰 영향을 주는 변수</strong>예요.<br>대출 이자 부담이 직접적으로 매수 심리와 가격에 영향.</div>
+        <div class="term-why"><div class="label">금리와 집값 관계</div>
+          금리↑ → 주담대 이자↑ → 매수 부담 → 집값 하락 압력<br>
+          금리↓ → 이자 부담↓ → 매수 심리 회복 → 집값 상승<br>
+          주담대 금리 4%대: 심리적 매수 활성 구간<br>
+          주담대 금리 6%+: 이자 부담으로 관망 우세<br>
+          금리 인하 기대 → 부동산 선반영 상승 가능</div>
+      </div>
+
+      <div class="term-row" data-domain="realty" data-cat="r-tax" data-keywords="부동산 pf 프로젝트 파이낸싱 시행사 건설사 부실 워크아웃" onclick="toggle(this)">
+        <div class="term-left"><span class="term-name">부동산 PF (프로젝트 파이낸싱)</span><span class="term-en">Real Estate Project Financing</span></div>
+        <div class="term-right"><span class="term-badge b-realty">세금·제도</span><span class="term-arrow">▼</span></div>
+      </div>
+      <div class="term-body">
+        <div class="term-desc">부동산 개발 사업을 할 때 <strong>그 사업의 미래 수익을 담보로</strong> 빌리는 대출이에요.<br>시행사·건설사가 대규모 프로젝트 추진 시 필수.</div>
+        <div class="term-why"><div class="label">왜 최근 이슈인가요?</div>
+          부동산 경기 침체 → 미분양 → PF 대출 상환 불가<br>
+          2023~2025년 PF 부실 → 건설사 워크아웃·파산 속출<br>
+          PF 부실 연쇄효과: 저축은행·새마을금고 등 금융권 파급<br>
+          정부 PF 정리 계획: 부실 PF 사업장 재구조화·매각<br>
+          관련주: 주요 건설사(현대건설·GS건설 등) 실적 영향</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>궁금한 용어 있으면 단톡방에 남겨주세요 — 다음 업데이트에 추가할게요 😊</p>
+    <p style="margin-top:4px;">투자 권유가 아닌 정보 공유입니다</p>
+  </div>
+
+</div>
+
+<script>
+let currentDomain = 'stock';
+let currentCat = 'all';
+
+const domainCats = {
+  stock: [
+    {id:'all', label:'전체'},
+    {id:'beginner', label:'🌱 초보자 보기'},
+    {id:'us', label:'🇺🇸 미국'},
+    {id:'kr', label:'🇰🇷 한국'},
+    {id:'macro', label:'🌍 매크로'},
+    {id:'coin', label:'🪙 코인'},
+    {id:'basic', label:'📚 기초'},
+    {id:'tech', label:'📈 기술분석'},
+  ],
+  realty: [
+    {id:'all', label:'전체'},
+    {id:'beginner', label:'🌱 초보자 보기'},
+    {id:'r-basic', label:'📋 임대차 기초'},
+    {id:'r-loan', label:'💰 대출·규제'},
+    {id:'r-invest', label:'📊 투자·시세'},
+    {id:'r-dev', label:'🏗️ 개발·공급'},
+    {id:'r-tax', label:'🏛️ 세금·제도'},
+  ]
+};
+
+function setDomain(domain, btn) {
+  currentDomain = domain;
+  currentCat = 'all';
+  document.querySelectorAll('.domain-tab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  renderCats();
+  applyFilter();
+}
+
+function renderCats() {
+  const cats = domainCats[currentDomain];
+  const container = document.getElementById('catTabs');
+  container.innerHTML = cats.map((c, i) =>
+    `<button class="cat-btn${i===0?' on':''}${c.id==='beginner'?' beginner-btn':''}" onclick="filterCat('${c.id}',this)">${c.label}</button>`
+  ).join('');
+}
+
+function toggle(row) {
+  const body = row.nextElementSibling;
+  const isOpen = row.classList.contains('open');
+  row.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('beginnerBanner').classList.toggle('show', cat === 'beginner');
+  applyFilter();
+}
+
+function applyFilter() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  const rows = document.querySelectorAll('.term-row');
+  let visible = 0;
+
+  rows.forEach(row => {
+    const domainMatch = row.dataset.domain === currentDomain;
+    let catMatch;
+    if (currentCat === 'all') catMatch = true;
+    else if (currentCat === 'beginner') catMatch = row.dataset.level === 'b';
+    else catMatch = row.dataset.cat === currentCat;
+    const keywords = (row.dataset.keywords || '') + ' ' + row.innerText.toLowerCase();
+    const searchMatch = !query || keywords.includes(query);
+    const show = domainMatch && catMatch && searchMatch;
+
+    row.style.display = show ? 'flex' : 'none';
+    const body = row.nextElementSibling;
+    if (body && body.classList.contains('term-body')) {
+      if (!show) { body.style.display = 'none'; row.classList.remove('open'); body.classList.remove('open'); }
+      else body.style.display = body.classList.contains('open') ? 'block' : 'none';
+    }
+    if (show) visible++;
+  });
+
+  document.querySelectorAll('.section').forEach(sec => {
+    const hasVisible = [...sec.querySelectorAll('.term-row')].some(r => r.style.display !== 'none');
+    sec.classList.toggle('hidden', !hasVisible);
+  });
+
+  document.getElementById('noResult').classList.toggle('show', visible === 0);
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  if (this.value.trim()) {
+    document.querySelectorAll('.term-row').forEach(row => {
+      if (row.style.display !== 'none') {
+        row.classList.add('open');
+        const body = row.nextElementSibling;
+        if (body && body.classList.contains('term-body')) body.classList.add('open');
+      }
+    });
+  }
+});
+
+// Init
+renderCats();
+applyFilter();
+</script>
+</body>
+</html>
