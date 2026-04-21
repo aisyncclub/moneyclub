@@ -1,0 +1,5 @@
+.env
+data/latest.json
+data/render_manifest.json
+__pycache__/
+*.pyc

@@ -1,0 +1,21 @@
+      <a class="report-card latest{% if is_crisis %} crisis{% endif %}" data-type="{{ report_type }}" href="{{ href }}">
+        <div class="rc-top">
+          <span class="rc-date">{{ date_label }}</span>
+          <span class="rc-badge new">NEW</span>
+{% if is_crisis %}
+          <span class="rc-badge crisis">🚨 긴급</span>
+{% else %}
+          <span class="rc-badge normal">📅 데일리</span>
+{% endif %}
+        </div>
+        <div class="rc-title">{{ title }}</div>
+        <div class="rc-summary">
+          {{ summary }}
+        </div>
+        <div class="rc-tags">
+{% for tag in tags %}
+          <span class="rc-tag {{ tag.kind }}">{{ tag.text }}</span>
+{% endfor %}
+        </div>
+        <div class="rc-arrow">자세히 보기 →</div>
+      </a>

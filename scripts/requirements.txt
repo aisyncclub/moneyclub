@@ -1,0 +1,5 @@
+yfinance
+feedparser
+jinja2
+google-generativeai
+python-dotenv

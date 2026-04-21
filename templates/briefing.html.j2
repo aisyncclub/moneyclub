@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ meta.title }}</title>
+<meta property="og:title" content="{{ meta.title }}">
+<meta property="og:description" content="{{ meta.description }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ meta.url }}">
+<meta property="og:image" content="https://aisyncclub.github.io/moneyclub/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="AI싱크 재테크클럽">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ meta.title }}">
+<meta name="twitter:description" content="{{ meta.twitter_description }}">
+<meta name="twitter:image" content="https://aisyncclub.github.io/moneyclub/og-image.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0b0b0d; --s:#17171b; --s2:#1e1e24; --bd:#2a2a32;
+  --t:#e4e4e7; --td:#8b8b96; --tm:#5c5c66;
+  --up:#22c55e; --dn:#ef4444; --w:#eab308;
+  --blue:#60a5fa; --purple:#a78bfa; --orange:#fb923c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.7;min-height:100vh}
+.ctr{max-width:720px;margin:0 auto;padding:20px 16px 80px}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.78rem;color:var(--td);text-decoration:none;margin-bottom:16px;padding:6px 12px;background:var(--s);border:1px solid var(--bd);border-radius:6px}
+.back-link:hover{color:var(--t);border-color:#555}
+
+/* Article Header */
+.art-meta{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.meta-date{font-size:0.75rem;color:var(--td);font-weight:600}
+.meta-badge{font-size:0.62rem;font-weight:700;padding:3px 8px;border-radius:4px;background:rgba(239,68,68,0.15);color:var(--dn)}
+
+h1.art-title{font-size:1.8rem;font-weight:900;color:#fff;line-height:1.3;letter-spacing:-0.02em;margin-bottom:12px}
+.art-lead{font-size:0.95rem;color:var(--td);line-height:1.8;padding:14px 16px;background:var(--s);border-left:3px solid var(--dn);border-radius:0 8px 8px 0;margin-bottom:24px}
+
+/* Dashboard */
+.dash{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}
+.dcard{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:12px}
+.dcard.up{border-color:rgba(34,197,94,0.3)}
+.dcard.dn{border-color:rgba(239,68,68,0.3)}
+.dcard.wr{border-color:rgba(234,179,8,0.3)}
+.dc-label{font-size:0.65rem;color:var(--tm);margin-bottom:4px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+.dc-val{font-size:1.05rem;font-weight:800;color:#fff}
+.dc-sub{font-size:0.68rem;margin-top:3px}
+.dcard.up .dc-sub{color:var(--up)}
+.dcard.dn .dc-sub{color:var(--dn)}
+.dcard.wr .dc-sub{color:var(--w)}
+
+/* Section */
+.sec{margin:28px 0}
+.sec h2{font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-0.01em}
+.sec h2 .icon{margin-right:6px}
+.sec p{font-size:0.87rem;color:var(--t);line-height:1.85;margin-bottom:12px}
+.sec p strong{color:#fff;font-weight:700}
+.sec p .hl-up{color:var(--up);font-weight:600}
+.sec p .hl-dn{color:var(--dn);font-weight:600}
+.sec p .hl-wr{color:var(--w);font-weight:600}
+
+/* Timeline */
+.timeline{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:14px 0}
+.tl-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}
+.tl-item:last-child{border-bottom:none}
+.tl-date{flex-shrink:0;font-size:0.72rem;font-weight:700;color:var(--tm);width:60px;padding-top:2px}
+.tl-body{flex:1}
+.tl-title{font-size:0.84rem;font-weight:700;color:#fff;margin-bottom:2px}
+.tl-desc{font-size:0.76rem;color:var(--td);line-height:1.7}
+.tl-item.red .tl-date{color:var(--dn)}
+.tl-item.green .tl-date{color:var(--up)}
+.tl-item.yellow .tl-date{color:var(--w)}
+
+/* Scenario cards */
+.scenarios{display:grid;gap:10px;margin:14px 0}
+.scn{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px;border-left:3px solid}
+.scn.a{border-left-color:var(--up)}
+.scn.b{border-left-color:var(--w)}
+.scn.c{border-left-color:var(--dn)}
+.scn-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.scn-title{font-size:0.88rem;font-weight:700;color:#fff}
+.scn-prob{font-size:0.72rem;font-weight:600;padding:2px 8px;border-radius:10px}
+.scn.a .scn-prob{background:rgba(34,197,94,0.15);color:var(--up)}
+.scn.b .scn-prob{background:rgba(234,179,8,0.15);color:var(--w)}
+.scn.c .scn-prob{background:rgba(239,68,68,0.15);color:var(--dn)}
+.scn-desc{font-size:0.78rem;color:var(--td);line-height:1.7}
+
+/* Calendar */
+.cal{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:14px 0}
+.cal-row{display:flex;gap:10px;padding:11px 12px;border-bottom:1px solid var(--bd);align-items:center}
+.cal-row:last-child{border-bottom:none}
+.cal-day{flex-shrink:0;width:56px;font-size:0.72rem;font-weight:700;color:var(--tm)}
+.cal-event{flex:1;font-size:0.8rem;color:var(--td);line-height:1.5}
+.cal-event strong{color:#fff}
+.cal-row.star{background:rgba(234,179,8,0.05)}
+.cal-row.star .cal-day{color:var(--w)}
+
+/* Insights */
+.insights{background:linear-gradient(135deg,rgba(96,165,250,0.06),rgba(167,139,250,0.04));border:1px solid rgba(96,165,250,0.15);border-radius:12px;padding:16px;margin:14px 0}
+.insights h3{font-size:0.92rem;font-weight:700;color:var(--blue);margin-bottom:10px}
+.insight-item{padding:8px 0;border-bottom:1px dashed rgba(255,255,255,0.08);font-size:0.8rem;color:var(--t);line-height:1.7}
+.insight-item:last-child{border-bottom:none}
+.insight-item strong{color:var(--blue);font-weight:700}
+
+/* Glossary helper */
+.gloss-box{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px;margin:14px 0}
+.gloss-box h3{font-size:0.88rem;font-weight:700;color:#fff;margin-bottom:8px}
+.gloss-box .gloss-terms{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 10px}
+.gloss-term{font-size:0.72rem;padding:4px 10px;background:var(--s2);border:1px solid var(--bd);border-radius:14px;color:var(--td)}
+.gloss-link{display:inline-block;margin-top:6px;padding:9px 14px;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.3);border-radius:8px;color:var(--blue);font-size:0.8rem;font-weight:600;text-decoration:none}
+.gloss-link:hover{background:rgba(96,165,250,0.15)}
+
+/* Callout */
+.callout{background:rgba(234,179,8,0.05);border:1px solid rgba(234,179,8,0.2);border-radius:10px;padding:14px 16px;margin:14px 0}
+.callout strong{color:var(--w)}
+.callout.red{background:rgba(239,68,68,0.05);border-color:rgba(239,68,68,0.2)}
+.callout.red strong{color:var(--dn)}
+.callout.green{background:rgba(34,197,94,0.05);border-color:rgba(34,197,94,0.2)}
+.callout.green strong{color:var(--up)}
+.callout p{font-size:0.82rem;color:var(--t);line-height:1.75;margin-bottom:0}
+
+/* Navigation footer */
+.nav-footer{display:flex;gap:10px;margin:30px 0 16px}
+.nav-btn{flex:1;padding:13px;text-align:center;background:var(--s);border:1px solid var(--bd);border-radius:10px;color:var(--t);text-decoration:none;font-size:0.82rem;font-weight:600;transition:all 0.15s}
+.nav-btn:hover{border-color:#555;background:var(--s2)}
+.nav-btn.primary{background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.3);color:var(--blue)}
+
+.footer{text-align:center;font-size:0.7rem;color:var(--tm);padding-top:20px;border-top:1px solid var(--bd);line-height:1.8;margin-top:20px}
+.footer .disclaimer{padding:10px 14px;background:rgba(239,68,68,0.04);border:1px solid rgba(239,68,68,0.15);border-radius:8px;color:#c87a7a;margin-bottom:12px;font-size:0.72rem}
+</style>
+</head>
+<body>
+<div class="ctr">
+
+  <a class="back-link" href="index.html">← 재테크클럽</a>
+
+  <div class="art-meta">
+    <span class="meta-date">{{ article.date_label }}</span>
+{% if article.is_urgent %}
+    <span class="meta-badge">🚨 긴급 업데이트</span>
+{% endif %}
+  </div>
+
+  <h1 class="art-title">{{ article.headline }}</h1>
+
+  <div class="art-lead">
+    <strong>한 줄 요약.</strong> {{ article.lead }}
+  </div>
+
+  <div class="dash">
+{% for card in dashboard %}
+    <div class="dcard {{ card.tone }}">
+      <div class="dc-label">{{ card.label }}</div>
+      <div class="dc-val">{{ card.value }}</div>
+      <div class="dc-sub">{{ card.sub }}</div>
+    </div>
+{% endfor %}
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">📖</span>무슨 일이 있었나?</h2>
+{% for paragraph in article.narrative %}
+    <p>{{ paragraph|safe }}</p>
+{% endfor %}
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">📅</span>{{ article.timeline_title }}</h2>
+    <div class="timeline">
+{% for item in article.timeline %}
+      <div class="tl-item {{ item.color }}">
+        <div class="tl-date">{{ item.date }}</div>
+        <div class="tl-body">
+          <div class="tl-title">{{ item.title }}</div>
+          <div class="tl-desc">{{ item.desc }}</div>
+        </div>
+      </div>
+{% endfor %}
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">🤔</span>우리 자산에 어떤 영향?</h2>
+{% for paragraph in article.asset_impact %}
+    <p>{{ paragraph|safe }}</p>
+{% endfor %}
+
+    <div class="callout">
+      <p><strong>⚡ 핵심 패턴:</strong> {{ article.asset_callout|safe }}</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">📌</span>이번 주 핵심 일정</h2>
+    <div class="cal">
+{% for event in article.calendar %}
+      <div class="cal-row{% if event.star %} star{% endif %}">
+        <div class="cal-day">{{ event.day }}</div>
+        <div class="cal-event">{{ event.event|safe }}</div>
+      </div>
+{% endfor %}
+    </div>
+    <p>{{ article.calendar_takeaway|safe }}</p>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">🎯</span>3가지 시나리오</h2>
+
+    <div class="scenarios">
+{% for scn in article.scenarios %}
+      <div class="scn {{ scn.tone }}">
+        <div class="scn-head">
+          <span class="scn-title">{{ scn.title }}</span>
+          <span class="scn-prob">확률 {{ scn.probability }}</span>
+        </div>
+        <div class="scn-desc">
+          {{ scn.desc|replace('\n', '<br>\n          ')|safe }}
+        </div>
+      </div>
+{% endfor %}
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">💡</span>기억할 핵심 포인트</h2>
+    <div class="insights">
+      <h3>📌 오늘의 인사이트 5가지</h3>
+
+{% for insight in article.insights %}
+      <div class="insight-item">
+        {{ insight|safe }}
+      </div>
+{% endfor %}
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">📚</span>과거 유사 사건에서 배우기</h2>
+{% for paragraph in article.historical_context %}
+    <p>{{ paragraph|safe }}</p>
+{% endfor %}
+
+    <div class="callout green">
+      <p>{{ article.historical_callout|safe }}</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">🔍</span>이 브리핑에 나온 용어들</h2>
+    <div class="gloss-box">
+      <h3>모르는 용어가 있었나요?</h3>
+      <div class="gloss-terms">
+{% for term in article.glossary_terms %}
+        <span class="gloss-term">{{ term }}</span>
+{% endfor %}
+      </div>
+      <p style="font-size:0.78rem;color:var(--td);margin-bottom:0;">생소한 용어는 용어집에서 쉽게 풀어서 설명해드려요 👇</p>
+      <a class="gloss-link" href="glossary.html">📖 투자 용어집 바로가기 →</a>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="icon">🧭</span>일반 투자자는 어떻게?</h2>
+{% for paragraph in article.investor_guide.paragraphs %}
+    <p>{{ paragraph|safe }}</p>
+{% endfor %}
+    <ul style="padding-left:20px;margin:8px 0 14px">
+{% for item in article.investor_guide.checklist %}
+      <li style="font-size:0.85rem;color:var(--t);line-height:1.9">{{ item|safe }}</li>
+{% endfor %}
+    </ul>
+
+    <div class="callout red">
+      <p>{{ article.investor_guide.warning|safe }}</p>
+    </div>
+  </div>
+
+  <div class="nav-footer">
+    <a class="nav-btn primary" href="glossary.html">📖 용어집</a>
+    <a class="nav-btn" href="index.html">← 리포트 보관함</a>
+  </div>
+
+  <div class="footer">
+    <div class="disclaimer">
+      ⚠️ 이 브리핑은 <strong>정보 공유 목적</strong>이며 투자 권유나 특정 종목 추천이 아닙니다.<br>
+      투자 결정과 그에 따른 결과는 각자의 판단과 책임하에 이뤄집니다.
+    </div>
+    <p>💎 AI SYNC 재테크클럽 · AI가 분석한 매일의 시장 브리핑</p>
+    <p style="margin-top:4px;">궁금한 용어나 내용은 단톡방에 남겨주세요</p>
+  </div>
+
+</div>
+</body>
+</html>
