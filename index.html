@@ -129,7 +129,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-card">
-      <div class="stat-num" id="statReports">3</div>
+      <div class="stat-num" id="statReports">4</div>
       <div class="stat-label">누적 리포트</div>
     </div>
     <div class="stat-card">
@@ -167,18 +167,38 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 
     <div class="filter-tabs">
       <button class="ftab on" onclick="filterReports('all',this)">전체</button>
-      <button class="ftab" onclick="filterReports('daily',this)">📅 데일리</button>
+      <button class="ftab" onclick="filterReports('us',this)">🇺🇸 미국장</button>
+      <button class="ftab" onclick="filterReports('kr',this)">🇰🇷 한국장</button>
       <button class="ftab" onclick="filterReports('crisis',this)">🚨 긴급</button>
-      <button class="ftab" onclick="filterReports('special',this)">📌 특집</button>
     </div>
 
     <div id="reportList">
 
-      <!-- 4/22 REPORT (LATEST - DAILY) -->
-      <a class="report-card latest" data-type="daily" href="briefing-2026-04-22.html">
+      <!-- 4/22 한국 브리핑 (LATEST - KR) -->
+      <a class="report-card latest" data-type="kr" href="한국briefing-2026-04-22.html">
         <div class="rc-top">
           <span class="rc-date">2026년 4월 22일 (수)</span>
           <span class="rc-badge new">NEW</span>
+          <span class="rc-badge normal" style="background:rgba(34,197,94,0.15);color:var(--up);">🇰🇷 한국장</span>
+        </div>
+        <div class="rc-title">SK하이닉스 +3.69% 랠리, 원화 강세 회복 — 한국 실적 시즌 본격화</div>
+        <div class="rc-summary">
+          휴전 연장 호재로 외국인 컴백 조짐. SK하이닉스 120만원선 돌파, 원화 1,474원 강세 회복. 반도체·방산·원전 삼두마차가 이번 주 한국장 방향을 이끕니다.
+        </div>
+        <div class="rc-tags">
+          <span class="rc-tag hl">🚀 SK하이닉스 +3.69%</span>
+          <span class="rc-tag hl">💵 USD/KRW 1,474</span>
+          <span class="rc-tag hl">🔫 K-방산 강세</span>
+          <span class="rc-tag wr">⚛️ 원전 투심 회복</span>
+        </div>
+        <div class="rc-arrow">자세히 보기 →</div>
+      </a>
+
+      <!-- 4/22 미국 REPORT -->
+      <a class="report-card" data-type="us" href="briefing-2026-04-22.html">
+        <div class="rc-top">
+          <span class="rc-date">2026년 4월 22일 (수)</span>
+          <span class="rc-badge normal" style="background:rgba(167,139,250,0.15);color:var(--purple,#a78bfa);">🇺🇸 미국장</span>
           <span class="rc-badge normal">⭐ Tesla D-day</span>
         </div>
         <div class="rc-title">휴전 연장 안도, 오늘 Tesla 실적이 진짜 분수령</div>
@@ -195,10 +215,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       </a>
 
       <!-- 4/21 REPORT -->
-      <a class="report-card" data-type="daily" href="briefing-2026-04-21.html">
+      <a class="report-card" data-type="us" href="briefing-2026-04-21.html">
         <div class="rc-top">
           <span class="rc-date">2026년 4월 21일 (화)</span>
-          <span class="rc-badge normal">📅 데일리</span>
+          <span class="rc-badge normal" style="background:rgba(167,139,250,0.15);color:var(--purple,#a78bfa);">🇺🇸 미국장</span>
         </div>
         <div class="rc-title">갭다운 공포 증발, 오늘 휴전 만료 · 내일 Tesla</div>
         <div class="rc-summary">
@@ -214,9 +234,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       </a>
 
       <!-- 4/20 REPORT -->
-      <a class="report-card crisis" data-type="crisis" href="briefing-2026-04-20.html">
+      <a class="report-card crisis" data-type="us crisis" href="briefing-2026-04-20.html">
         <div class="rc-top">
           <span class="rc-date">2026년 4월 20일 (월)</span>
+          <span class="rc-badge normal" style="background:rgba(167,139,250,0.15);color:var(--purple,#a78bfa);">🇺🇸 미국장</span>
           <span class="rc-badge crisis">🚨 긴급</span>
         </div>
         <div class="rc-title">주말 하나로 완전 역전 — 이란 선박 나포 · WTI +7% 급반등</div>
@@ -254,7 +275,8 @@ function filterReports(type, btn) {
   const cards = document.querySelectorAll('.report-card');
   let visible = 0;
   cards.forEach(card => {
-    const show = type === 'all' || card.dataset.type === type;
+    const types = (card.dataset.type || '').split(/\s+/);
+    const show = type === 'all' || types.includes(type);
     card.style.display = show ? 'block' : 'none';
     if (show) visible++;
   });
