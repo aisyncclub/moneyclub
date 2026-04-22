@@ -84,6 +84,38 @@ h1.art-title{font-size:1.8rem;font-weight:900;color:#fff;line-height:1.3;letter-
 .scn.c .scn-prob{background:rgba(239,68,68,0.15);color:var(--dn)}
 .scn-desc{font-size:0.78rem;color:var(--td);line-height:1.7}
 
+/* Sector table */
+.sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+@media(max-width:560px){.sector-grid{grid-template-columns:1fr}}
+.sec-card{display:flex;align-items:center;gap:10px;padding:11px 13px;background:var(--s);border:1px solid var(--bd);border-radius:10px;border-left:3px solid}
+.sec-card.up{border-left-color:var(--up)}
+.sec-card.dn{border-left-color:var(--dn)}
+.sec-card.flat{border-left-color:var(--tm)}
+.sec-icon{font-size:1.3rem;flex-shrink:0}
+.sec-body{flex:1;min-width:0}
+.sec-name{font-size:0.82rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:6px}
+.sec-ticker{font-size:0.62rem;color:var(--tm);font-weight:500;background:var(--s2);padding:1px 5px;border-radius:3px}
+.sec-note{font-size:0.72rem;color:var(--td);margin-top:2px;line-height:1.5}
+.sec-pct{font-size:0.78rem;font-weight:700;flex-shrink:0}
+.sec-card.up .sec-pct{color:var(--up)}
+.sec-card.dn .sec-pct{color:var(--dn)}
+.sec-card.flat .sec-pct{color:var(--tm)}
+
+/* Watchlist cards */
+.watch-list{display:grid;gap:10px;margin:14px 0}
+.watch-card{background:var(--s);border:1px solid var(--bd);border-radius:10px;padding:14px;border-left:3px solid var(--blue)}
+.watch-card.hot{border-left-color:var(--w)}
+.watch-card.risk{border-left-color:var(--dn)}
+.watch-top{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.watch-ticker{font-size:0.95rem;font-weight:800;color:#fff;letter-spacing:-0.01em}
+.watch-name{font-size:0.76rem;color:var(--td);font-weight:500}
+.watch-tag{font-size:0.6rem;font-weight:700;padding:2px 7px;border-radius:10px;background:rgba(96,165,250,0.12);color:var(--blue);margin-left:auto}
+.watch-card.hot .watch-tag{background:rgba(234,179,8,0.15);color:var(--w)}
+.watch-card.risk .watch-tag{background:rgba(239,68,68,0.15);color:var(--dn)}
+.watch-reason{font-size:0.78rem;color:var(--t);line-height:1.7;margin-bottom:6px}
+.watch-trigger{font-size:0.72rem;color:var(--td);padding:6px 10px;background:var(--s2);border-radius:6px;line-height:1.6}
+.watch-trigger strong{color:var(--w)}
+
 .cal{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:4px;margin:14px 0}
 .cal-row{display:flex;gap:10px;padding:11px 12px;border-bottom:1px solid var(--bd);align-items:center}
 .cal-row:last-child{border-bottom:none}
@@ -235,11 +267,171 @@ h1.art-title{font-size:1.8rem;font-weight:900;color:#fff;line-height:1.3;letter-
     <p><strong>2. 진짜 관전 포인트는 <span class="hl-up">Robotaxi · Cybercab · AI 코멘터리</span>.</strong><br>
     Austin에서 Model Y 31대 $4.20 요금 무인 운영 중, Dallas·Houston 확장. Cybercab 양산은 이번 달 시작. 실적 발표에서 이 내러티브가 얼마나 구체적으로 나오느냐 — "언제 어디서 몇 대"가 핵심.</p>
 
-    <p><strong>3. Tesla는 2026년 들어 <span class="hl-dn">-20% 빠진 상태</span>.</strong><br>
-    주가는 $280 근처. 시장이 기대치를 이미 낮췄기 때문에 역발상 기회가 있어요. "예상보다 덜 나쁨 + Robotaxi 긍정"이면 반등 가능. 반대로 가이던스가 흐리거나 Cybercab 지연 언급되면 $250 재테스트.</p>
+    <p><strong>3. Tesla 주가 현재 <span class="hl-wr">$392.50</span> (4/21 종가).</strong><br>
+    52주 최고 $498.83 / 최저 $229.85. 최근 랠리로 $400선 턱밑까지 회복한 상태. <span class="hl-up">실적 기대감이 이미 주가에 반영</span>된 상황이라 "기대치 이상" 서프라이즈가 나와야 추가 상승 가능. 반대로 가이던스 흐림 or Cybercab 지연 시 $370~350 조정 위험.</p>
 
     <div class="callout green">
       <p>💡 <strong>역발상 포인트:</strong> Tesla가 실적 발표일에 주가 급등하는 경우는 최근 4번 중 3번. 시장이 낮춰놓은 기대치가 오히려 서프라이즈 확률을 높입니다. 다만 발표 직후 15분 내 ±8% 변동은 일상.</p>
+    </div>
+  </div>
+
+  <!-- SECTOR ROTATION -->
+  <div class="sec">
+    <h2><span class="icon">🔄</span>섹터 로테이션 흐름</h2>
+    <p>4/21 기준 섹터별 움직임. 이란 긴장 + Tesla 대기 + 실적 시즌 초입이 맞물리면서 <strong>방어주→경기민감주로 미묘한 전환</strong>이 시작됐어요.</p>
+    <div class="sector-grid">
+      <div class="sec-card up">
+        <div class="sec-icon">🛢️</div>
+        <div class="sec-body">
+          <div class="sec-name">에너지 <span class="sec-ticker">XLE</span></div>
+          <div class="sec-note">유가 $86+ 지속, 호르무즈 봉쇄 프리미엄</div>
+        </div>
+        <div class="sec-pct">+0.23%</div>
+      </div>
+      <div class="sec-card up">
+        <div class="sec-icon">🏦</div>
+        <div class="sec-body">
+          <div class="sec-name">금융 <span class="sec-ticker">XLF</span></div>
+          <div class="sec-note">금리 유지 전망으로 NIM 수혜</div>
+        </div>
+        <div class="sec-pct">+0.21%</div>
+      </div>
+      <div class="sec-card up">
+        <div class="sec-icon">💻</div>
+        <div class="sec-body">
+          <div class="sec-name">기술 <span class="sec-ticker">XLK</span></div>
+          <div class="sec-note">Tesla 대기, 긍정 가이던스 가장 많음</div>
+        </div>
+        <div class="sec-pct">+0.22%</div>
+      </div>
+      <div class="sec-card dn">
+        <div class="sec-icon">💊</div>
+        <div class="sec-body">
+          <div class="sec-name">헬스케어 <span class="sec-ticker">XLV</span></div>
+          <div class="sec-note">UnitedHealth 실적 경계, 방어 약화</div>
+        </div>
+        <div class="sec-pct">-0.87%</div>
+      </div>
+      <div class="sec-card dn">
+        <div class="sec-icon">📱</div>
+        <div class="sec-body">
+          <div class="sec-name">커뮤니케이션 <span class="sec-ticker">XLC</span></div>
+          <div class="sec-note">구글·메타 다음 주 실적 대기 경계</div>
+        </div>
+        <div class="sec-pct">약세</div>
+      </div>
+      <div class="sec-card dn">
+        <div class="sec-icon">🛍️</div>
+        <div class="sec-body">
+          <div class="sec-name">임의소비재 <span class="sec-ticker">XLY</span></div>
+          <div class="sec-note">Tesla 비중 큼, 실적 전 관망</div>
+        </div>
+        <div class="sec-pct">혼조</div>
+      </div>
+      <div class="sec-card flat">
+        <div class="sec-icon">🏭</div>
+        <div class="sec-body">
+          <div class="sec-name">산업재 <span class="sec-ticker">XLI</span></div>
+          <div class="sec-note">Boeing·GE 실적 대기, 대체로 보합</div>
+        </div>
+        <div class="sec-pct">보합</div>
+      </div>
+      <div class="sec-card up">
+        <div class="sec-icon">⚒️</div>
+        <div class="sec-body">
+          <div class="sec-name">소재 <span class="sec-ticker">XLB</span></div>
+          <div class="sec-note">인플레 헤지 수요 + 원자재 강세</div>
+        </div>
+        <div class="sec-pct">강세</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>🔍 로테이션 핵심:</strong> 지난주 주인공이던 <span style="color:var(--dn);">기술·커뮤니케이션이 약세로 전환</span>했고, <span style="color:var(--up);">에너지·금융·소재가 강세</span>. 이는 시장이 "인플레·금리 유지 장기화 + 지정학" 내러티브를 반영하는 중이라는 신호. 성장주 몰빵보다 <strong>섹터 분산</strong> 유효한 구간.</p>
+    </div>
+  </div>
+
+  <!-- WATCHLIST -->
+  <div class="sec">
+    <h2><span class="icon">📊</span>오늘의 관전 종목</h2>
+    <p>실적 발표 + 매크로 수혜/피해 + 한국인 관심 종목 중 오늘 특별히 지켜볼 만한 7개를 골랐어요.</p>
+
+    <div class="watch-list">
+
+      <div class="watch-card hot">
+        <div class="watch-top">
+          <span class="watch-ticker">TSLA</span>
+          <span class="watch-name">테슬라 · $392.50</span>
+          <span class="watch-tag">🔥 오늘 실적</span>
+        </div>
+        <div class="watch-reason">장 마감 후(KST 목 새벽 6:30) Q1 실적 + 5:30 PM ET 컨퍼런스콜. 핵심은 <strong>Robotaxi 확장 로드맵</strong>과 <strong>Cybercab 양산 일정</strong>. 실적 수치 자체는 이미 선반영.</div>
+        <div class="watch-trigger">트리거 — <strong>$400 돌파</strong>: 서프라이즈 반응 / <strong>$370 이탈</strong>: Cybercab 지연 우려</div>
+      </div>
+
+      <div class="watch-card">
+        <div class="watch-top">
+          <span class="watch-ticker">NOW</span>
+          <span class="watch-name">서비스나우 · AI 엔터프라이즈</span>
+          <span class="watch-tag">오늘 실적</span>
+        </div>
+        <div class="watch-reason">엔터프라이즈 AI 수요 지표. 가이던스가 빅테크 클라우드 지출 선행지표. Tesla에 묻혔지만 <strong>AI 인프라주 방향</strong> 가늠 재료.</div>
+        <div class="watch-trigger">트리거 — 긍정 가이던스 시 MSFT·AMZN 동반 상승 가능</div>
+      </div>
+
+      <div class="watch-card">
+        <div class="watch-top">
+          <span class="watch-ticker">IBM</span>
+          <span class="watch-name">IBM · 레거시+AI 전환</span>
+          <span class="watch-tag">오늘 실적</span>
+        </div>
+        <div class="watch-reason">컨설팅·하이브리드클라우드·왓슨X. 배당주 관점 + 레거시 기업의 AI 전환 성공 사례로 조명. 주가 모멘텀 좋은 상태.</div>
+        <div class="watch-trigger">트리거 — 컨설팅 bookings 증가율이 핵심</div>
+      </div>
+
+      <div class="watch-card risk">
+        <div class="watch-top">
+          <span class="watch-ticker">BA</span>
+          <span class="watch-name">보잉 · 민간항공+방산</span>
+          <span class="watch-tag">오늘 실적</span>
+        </div>
+        <div class="watch-reason">737 MAX 생산·품질 문제 해소 여부 + 이란發 방산 부문 호재. 최근 실적 연속 미스 중이라 시장 경계.</div>
+        <div class="watch-trigger">트리거 — <strong>Free Cash Flow</strong> 개선 확인 시 반등 가능</div>
+      </div>
+
+      <div class="watch-card hot">
+        <div class="watch-top">
+          <span class="watch-ticker">XOM / CVX</span>
+          <span class="watch-name">엑슨모빌·쉐브론 · 정유주</span>
+          <span class="watch-tag">🛢️ 유가 수혜</span>
+        </div>
+        <div class="watch-reason">호르무즈 봉쇄 프리미엄 유지 → 유가 $86+ 지속. 이번 주 실적 직전이지만 <strong>에너지 섹터 리더</strong>로 섹터 자금 유입 지속.</div>
+        <div class="watch-trigger">트리거 — WTI $90 돌파 시 추가 +2~3%</div>
+      </div>
+
+      <div class="watch-card">
+        <div class="watch-top">
+          <span class="watch-ticker">NVDA</span>
+          <span class="watch-name">엔비디아 · AI 인프라 중심</span>
+          <span class="watch-tag">🇰🇷 한국인 최다 보유</span>
+        </div>
+        <div class="watch-reason">Tesla 실적 → AI 내러티브 확산 여부가 NVDA 흐름 선행 지표. 다음 주 Apple/MSFT/Meta/Alphabet 실적 대기 → 변동성 높음.</div>
+        <div class="watch-trigger">트리거 — Tesla 컨콜에서 "NVIDIA H100 사용량" 언급 여부</div>
+      </div>
+
+      <div class="watch-card">
+        <div class="watch-top">
+          <span class="watch-ticker">005930.KS</span>
+          <span class="watch-name">삼성전자 · HBM + 스마트폰</span>
+          <span class="watch-tag">🇰🇷 환율 수혜</span>
+        </div>
+        <div class="watch-reason">USD/KRW 1,480→1,474 회복 → 외국인 복귀 조건. 5월 1일 잠정 실적 앞두고 <strong>HBM3E 공급 경쟁</strong> 소식 관심.</div>
+        <div class="watch-trigger">트리거 — 코스피 외국인 순매수 전환 시 반등 사이클 진입</div>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <p><strong>📌 종목 선정 기준:</strong> ①오늘 실적 발표(TSLA·NOW·IBM·BA) ②매크로 수혜주(XOM·CVX) ③한국인 보유 비중 높은 해외주(NVDA) ④환율·외국인 영향 한국주(삼성전자). <strong>매수 추천 아닌 관찰 가이드</strong>입니다.</p>
     </div>
   </div>
 
@@ -306,7 +498,7 @@ h1.art-title{font-size:1.8rem;font-weight:900;color:#fff;line-height:1.3;letter-
         </div>
         <div class="scn-desc">
           Tesla 가이던스 쇼크 (Cybercab 지연 · FSD 마진 악화) + 이란 추가 도발<br>
-          나스닥 -3~4%, Tesla 주가 $250 재테스트, BTC $70K 테스트<br>
+          나스닥 -3~4%, Tesla 주가 $350대 조정, BTC $70K 테스트<br>
           <strong style="color:var(--dn);">→ 이번 주 조정의 시작 신호</strong>
         </div>
       </div>
