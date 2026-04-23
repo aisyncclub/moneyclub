@@ -1,0 +1,264 @@
+/* Synapse Report Common Styles */
+/* 모든 리포트 HTML에서 <link rel="stylesheet" href="style.css"> 로 사용 */
+
+:root {
+  --bg: #111113;
+  --surface: #19191d;
+  --surface-2: #222228;
+  --surface-3: #2a2a30;
+  --border: #2e2e36;
+  --text: #d4d4d8;
+  --text-dim: #8b8b96;
+  --text-muted: #5c5c66;
+  --up: #22c55e;
+  --up-bg: rgba(34,197,94,0.07);
+  --dn: #ef4444;
+  --dn-bg: rgba(239,68,68,0.07);
+  --warn: #eab308;
+  --warn-bg: rgba(234,179,8,0.06);
+  --blue: #60a5fa;
+  --blue-bg: rgba(96,165,250,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* Layout */
+.container { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+
+/* Card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 14px;
+}
+.card-header {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* Metric */
+.metric {
+  text-align: center;
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.metric-label { font-size: 0.66rem; color: var(--text-muted); }
+.metric-val { font-size: 1.2rem; font-weight: 700; margin-top: 2px; }
+.metric-sub { font-size: 0.7rem; margin-top: 1px; }
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+.badge-up { background: var(--up-bg); color: var(--up); }
+.badge-dn { background: var(--dn-bg); color: var(--dn); }
+.badge-warn { background: var(--warn-bg); color: var(--warn); }
+.badge-blue { background: var(--blue-bg); color: var(--blue); }
+.badge-muted { background: rgba(255,255,255,0.04); color: var(--text-dim); }
+
+/* Row */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border-radius: 6px;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+}
+
+/* Divider */
+.divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+/* Tabs */
+.tab-nav {
+  display: flex;
+  gap: 1px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex: 1;
+  min-width: 70px;
+  padding: 8px 14px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.tab-btn:hover { color: var(--text-dim); background: var(--surface-2); }
+.tab-btn.active { color: #fff; background: var(--surface-2); font-weight: 600; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* Tooltip */
+.tip { position: relative; cursor: help; border-bottom: 1px dashed var(--text-muted); }
+.tip .tip-box {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  width: 260px;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.15s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+  pointer-events: none;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.tip .tip-box::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: var(--surface-2);
+}
+.tip:hover .tip-box,
+.tip:focus .tip-box { opacity: 1; visibility: visible; }
+
+/* Chain / Causal */
+.chain-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.chain-box .title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--warn);
+  margin-bottom: 10px;
+}
+.chain-step {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #c1c1c8;
+  padding-left: 8px;
+}
+.fork {
+  margin-top: 8px;
+  padding-left: 16px;
+  border-left: 2px solid var(--border);
+}
+.fork-item { font-size: 0.8rem; padding: 3px 0; color: #a1a1aa; }
+
+/* Scenario cards */
+.scenario-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+}
+.scenario-card.a { border-left: 3px solid var(--up); }
+.scenario-card.b { border-left: 3px solid var(--warn); }
+.scenario-card.c { border-left: 3px solid var(--dn); }
+
+/* Tags */
+.tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.tag-red { background: rgba(239,68,68,0.15); color: var(--dn); }
+.tag-green { background: rgba(34,197,94,0.15); color: var(--up); }
+.tag-yellow { background: rgba(234,179,8,0.15); color: var(--warn); }
+
+/* Warning box */
+.warning-box {
+  background: rgba(239,68,68,0.07);
+  border: 1px solid rgba(239,68,68,0.25);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+/* Dashboard back button */
+.back-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: rgba(25,25,29,0.92);
+  border: 1px solid rgba(46,46,54,0.8);
+  border-radius: 6px;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.15s;
+}
+.back-btn:hover { color: var(--text); border-color: #555; }
+
+/* Link cards */
+.link-card {
+  display: block;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border-radius: 6px;
+  margin-bottom: 4px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  transition: all 0.15s;
+}
+.link-card:hover { background: var(--surface-3); }
+
+/* Colors */
+.red { color: var(--dn); }
+.green { color: var(--up); }
+.yellow { color: var(--warn); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .tip .tip-box { width: 200px; font-size: 0.72rem; }
+  .container { padding: 16px 12px; }
+}

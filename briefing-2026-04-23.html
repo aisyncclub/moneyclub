@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>데일리 종합 2026-04-23 — 신고가 랠리와 유가 $100 재돌파 리스크가 공존</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  .tab-pane{display:none}.tab-pane.active{display:block}
+  .section-label{font-size:0.7rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px}
+  .source-list a{color:var(--up);text-decoration:none}.source-list a:hover{text-decoration:underline}
+</style>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</head>
+<body>
+
+<a class="back-btn" href="index.html">&larr; Dashboard</a>
+
+<div class="container" style="padding-top:50px;">
+
+  <div style="margin-bottom:20px;">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+      <span class="tag tag-green">S&amp;P 7,137.90 신고가</span>
+      <span class="tag tag-green">NASDAQ +1.6% 신고가</span>
+      <span class="tag tag-yellow">Brent $101대 · WTI $92대</span>
+      <span class="tag tag-green">BTC $78K~79K 회복</span>
+      <span class="tag tag-yellow">KOSPI 6,500 돌파 · 반도체 쏠림</span>
+    </div>
+    <h1 style="font-size:1.4rem;font-weight:800;color:#fff;">데일리 종합 2026-04-23 (목요일 — 신고가 랠리 vs 유가 리스크)</h1>
+    <p style="font-size:0.82rem;color:var(--text-dim);margin-top:4px;">4/22 미국장은 휴전 연장 안도와 실적 호조로 S&amp;P·NASDAQ이 신고가를 다시 썼다. 하지만 호르무즈 봉쇄와 유조선 공격 여파로 Brent는 $100 위, WTI는 $92대에 머물렀다. 한국장은 4/23 오전 KOSPI 6,500 돌파. 핵심은 “리스크온은 맞지만 에너지 비용 재상승이 랠리의 유효기간을 제한한다”는 점이다.</p>
+  </div>
+
+  <div class="card" style="padding:16px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px;">
+      <div class="metric">
+        <div class="metric-label">S&amp;P 500</div>
+        <div class="metric-val" style="color:var(--up);">7,137.90</div>
+        <div class="metric-sub" style="color:var(--up);">+1.0% · 신고가</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">NASDAQ</div>
+        <div class="metric-val" style="color:var(--up);">24,657.57</div>
+        <div class="metric-sub" style="color:var(--up);">+1.6% · 신고가</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">Dow</div>
+        <div class="metric-val" style="color:var(--up);">49,490.03</div>
+        <div class="metric-sub" style="color:var(--up);">+0.7% · +341pt</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">유가</div>
+        <div class="metric-val" style="color:var(--warn);">Brent $101대</div>
+        <div class="metric-sub" style="color:var(--warn);">WTI $92대 · 공급 리스크</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+      <div class="metric">
+        <div class="metric-label">Tesla</div>
+        <div class="metric-val" style="color:var(--up);">시간외 +4%대</div>
+        <div class="metric-sub" style="color:var(--up);">매출 기대 상회·FCF 개선</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">BTC</div>
+        <div class="metric-val" style="color:var(--up);">$78K~79K</div>
+        <div class="metric-sub" style="color:var(--up);">11주 고점권 회복</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">KOSPI</div>
+        <div class="metric-val" style="color:var(--up);">6,539.80</div>
+        <div class="metric-sub" style="color:var(--up);">4/23 09:28 · +1.90%</div>
+      </div>
+      <div class="metric">
+        <div class="metric-label">한국 수급</div>
+        <div class="metric-val" style="color:var(--warn);">반도체 집중</div>
+        <div class="metric-sub" style="color:var(--warn);">외국인 매수 70% 삼성·하이닉스</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('t1',this)">인과 체인</button>
+    <button class="tab-btn" onclick="showTab('t2',this)">주식 시장</button>
+    <button class="tab-btn" onclick="showTab('t3',this)">크립토</button>
+    <button class="tab-btn" onclick="showTab('t4',this)">이벤트·리스크</button>
+    <button class="tab-btn" onclick="showTab('t5',this)">인사이트</button>
+  </div>
+
+  <div id="t1" class="tab-pane active">
+    <div class="chain-box">
+      <div class="title">Chain 1 — “휴전 연장 안도 → 실적 재평가 → 신고가”</div>
+      <div class="chain-step">
+        <span class="green">Trump의 이란 휴전 연장 발표가 결렬 공포를 낮춤</span><br>
+        <span style="color:var(--text-muted);">&rarr;</span> 시장은 전쟁 헤드라인보다 실적 시즌으로 시선을 이동<br>
+        <span style="color:var(--text-muted);">&rarr;</span> GE Vernova·Boeing·Tesla 등 실적 모멘텀 확인<br>
+        <span style="color:var(--text-muted);">&rarr;</span> S&amp;P 500 +1.0%, NASDAQ +1.6% 신고가<br>
+        <span style="color:var(--text-muted);">&rarr;</span> AI·반도체·대형 기술주로 FOMO성 매수 재개
+      </div>
+      <div class="fork" style="margin-top:12px;">
+        <div class="fork-item"><strong class="green">시나리오 A (35%) — 실적 랠리 연장:</strong><br>
+          Tesla 후폭풍 제한 + 대형 기술주 실적 기대 지속 + 유가 $95 이하 안정.<br>
+          <span style="color:var(--warn);">내 행동: 기존 성장주·BTC 포지션 홀드. 신규 레버리지 추격은 금지, 눌림만 대기.</span>
+        </div>
+        <div class="fork-item" style="margin-top:8px;"><strong class="yellow">시나리오 B (45%) — 신고가 유지, 내부 쏠림 확대:</strong><br>
+          지수는 강하지만 상승 종목은 AI·반도체·실적주에 집중. 유가 $100 부근이 계속 부담.<br>
+          <span style="color:var(--warn);">내 행동: 보유는 유지하되 추격 매수 금지. 한국장은 반도체 과밀 확인 후 분할 대응.</span>
+        </div>
+        <div class="fork-item" style="margin-top:8px;"><strong class="red">시나리오 C (20%) — 유가 재급등이 랠리 차단:</strong><br>
+          호르무즈 협상 지연 + 추가 유조선 공격 → Brent $105~110, WTI $98~105 → 인플레·금리 부담 재점화.<br>
+          <span style="color:var(--warn);">내 행동: BTC $76K 이탈·NASDAQ 장중 반락 동시 발생 시 리스크 축소. 신규 매매 스캔 전면 보류.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chain-box">
+      <div class="title">Chain 2 — “한국 KOSPI 6,500 돌파 → 외국인 반도체 집중 → 지수 착시 리스크”</div>
+      <div class="chain-step">
+        <span class="green">미국 신고가 + AI·반도체 강세</span><br>
+        <span style="color:var(--text-muted);">&rarr;</span> 한국 4/23 오전 KOSPI 6,500 돌파, 09:28 기준 6,539.80(+1.90%)<br>
+        <span style="color:var(--text-muted);">&rarr;</span> Samsung Electronics·SK hynix가 상승 주도<br>
+        <span style="color:var(--text-muted);">&rarr;</span> 외국인 순매수의 약 70%가 삼성전자·SK하이닉스에 집중<br>
+        <span style="color:var(--text-muted);">&rarr;</span> 결론: 한국장 강세는 맞지만 “내 계좌가 지수만큼 오르지 않는” 쏠림 장세 가능성 높음
+      </div>
+    </div>
+
+    <div class="card" style="border-left:3px solid var(--warn);padding:16px;">
+      <div style="font-size:0.72rem;font-weight:700;color:var(--warn);margin-bottom:6px;">전인구 역지표 (4/23)</div>
+      <div style="font-size:0.84rem;line-height:1.8;color:var(--text-dim);">
+        <strong style="color:var(--text);">예상 주장:</strong> “신고가라 이제 끝물, 전쟁·유가 때문에 곧 폭락”<br>
+        <strong style="color:var(--warn);">역해석:</strong> 신고가 돌파 직후 공포 해설이 늘어나는 구간은 보통 즉시 폭락보다 <b>추격 매수 유혹과 변동성 확대</b>가 먼저 온다. 문제는 방향이 아니라 진입가다.<br>
+        <strong style="color:var(--text);">실전 해석:</strong> 공포 매도도 금지, 신고가 추격도 금지. 강한 종목은 보유, 신규는 눌림·실적 확인 후.
+      </div>
+    </div>
+  </div>
+
+  <div id="t2" class="tab-pane">
+    <div class="section-label">미국 주요 지수 (4/22 종가)</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;">
+      <div class="row"><span style="font-weight:600;">S&amp;P 500</span><span style="color:var(--up);font-weight:700;">7,137.90 · +1.0% · 2026년 8번째 신고가</span></div>
+      <div class="row"><span style="font-weight:600;">NASDAQ</span><span style="color:var(--up);font-weight:700;">24,657.57 · +1.6% · 기술주 강세</span></div>
+      <div class="row"><span style="font-weight:600;">Dow</span><span style="color:var(--up);font-weight:700;">49,490.03 · +0.7% · +341pt</span></div>
+      <div class="row"><span style="font-weight:600;">Russell 2000</span><span style="color:var(--up);font-weight:700;">2,785.38 · +0.7%</span></div>
+      <div class="row"><span style="font-weight:600;">유가</span><span style="color:var(--warn);font-weight:700;">Brent $101.70~101.91 · WTI $92.78~92.96</span></div>
+    </div>
+
+    <div class="section-label">섹터 로테이션</div>
+    <div class="card" style="padding:14px;margin-bottom:16px;">
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+        <div style="padding:10px;background:var(--surface-2);border-radius:6px;border-left:2px solid var(--up);">
+          <div style="font-weight:700;color:var(--up);">AI·반도체</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">Microsoft·Amazon·Alphabet·Micron·Sandisk 강세. 한국은 삼성전자·SK하이닉스로 직결.</div>
+        </div>
+        <div style="padding:10px;background:var(--surface-2);border-radius:6px;border-left:2px solid var(--up);">
+          <div style="font-weight:700;color:var(--up);">산업재·항공</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">Boeing +5%대. 실적 개선주가 지정학 공포를 흡수.</div>
+        </div>
+        <div style="padding:10px;background:var(--surface-2);border-radius:6px;border-left:2px solid var(--warn);">
+          <div style="font-weight:700;color:var(--warn);">에너지</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">유가 $100대는 에너지주에는 우호적이지만 시장 전체에는 인플레 부담.</div>
+        </div>
+        <div style="padding:10px;background:var(--surface-2);border-radius:6px;border-left:2px solid var(--dn);">
+          <div style="font-weight:700;color:var(--dn);">방어주</div>
+          <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">신고가 랠리에서는 상대 약세. 단, 유가 급등 시 헬스케어·필수소비재 방어 역할 재부각.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">오늘의 관전 종목</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;">
+      <div class="row"><span style="font-weight:600;">TSLA</span><span>실적 후 시간외 +4%대. 핵심은 FCF $1.4B와 가이던스 콜 후 상승 지속 여부.</span></div>
+      <div class="row"><span style="font-weight:600;">NVDA·MSFT·AMZN</span><span>AI 랠리 대표. 신고가 돌파 후 추격보다 눌림 기준 필요.</span></div>
+      <div class="row"><span style="font-weight:600;">BA</span><span>실적 개선 반응 +5%대. 산업재 실적 랠리 지속 여부 체크.</span></div>
+      <div class="row"><span style="font-weight:600;">XOM·CVX</span><span>유가 $100대에서 수혜. 다만 전쟁 프리미엄 추격 매수는 리스크 큼.</span></div>
+      <div class="row"><span style="font-weight:600;">삼성전자·SK하이닉스</span><span>한국장 상승 대부분을 설명. 외국인 수급 집중이 유지되는지 확인.</span></div>
+    </div>
+  </div>
+
+  <div id="t3" class="tab-pane">
+    <div class="section-label">크립토 현황</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;">
+      <div class="row"><span style="font-weight:600;">BTC</span><span style="color:var(--up);font-weight:700;">$78K~79K · 11주 고점권</span></div>
+      <div class="row"><span style="font-weight:600;">ETH</span><span style="color:var(--up);font-weight:700;">BTC보다 탄력 우위 가능 · ETF·유동성 재평가</span></div>
+      <div class="row"><span style="font-weight:600;">핵심 레벨</span><span>$80K 돌파 시 모멘텀 확장, $76K 이탈 시 단기 과열 해소</span></div>
+    </div>
+
+    <div class="card" style="padding:14px;margin-bottom:16px;">
+      <div style="font-size:0.84rem;line-height:1.8;color:var(--text-dim);">
+        <strong style="color:var(--up);">BTC가 다시 강해진 이유:</strong> 휴전 연장으로 리스크온이 회복되고, 지정학 변동성 속에서도 현물 ETF·기관 수요가 받쳐주는 구조가 재확인됐다. MarketWatch는 전주 BTC 현물 ETF 유입이 거의 $1B에 달했다고 보도했다.<br>
+        <strong style="color:var(--warn);">하지만 주의:</strong> 유가가 다시 $105 이상으로 튀면 “위험자산 전체 축소”가 먼저 오므로 BTC도 단기 조정 가능. $80K 돌파 전 추격은 리스크가 높다.
+      </div>
+    </div>
+
+    <div class="section-label">크립토 시나리오</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+      <div class="card" style="padding:12px;border-left:3px solid var(--up);">
+        <div style="font-weight:700;color:var(--up);">A 30%</div>
+        <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">$80K 돌파. 휴전 진전 + ETF 유입 지속. ETH·COIN·MSTR 동반 강세.</div>
+      </div>
+      <div class="card" style="padding:12px;border-left:3px solid var(--warn);">
+        <div style="font-weight:700;color:var(--warn);">B 50%</div>
+        <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">$76K~80K 박스. 주식 신고가와 유가 리스크 사이에서 숨고르기.</div>
+      </div>
+      <div class="card" style="padding:12px;border-left:3px solid var(--dn);">
+        <div style="font-weight:700;color:var(--dn);">C 20%</div>
+        <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.7;">$76K 이탈. 유가 급등·나스닥 반락 동시 발생 시 $73K 재테스트.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="t4" class="tab-pane">
+    <div class="section-label">이벤트 타임라인</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;">
+      <div class="row" style="border:1px solid rgba(34,197,94,0.25);background:rgba(34,197,94,0.04);"><span style="color:var(--up);font-weight:700;">4/22 미국장</span><span>S&amp;P·NASDAQ 신고가, Tesla 실적 후 시간외 반등</span></div>
+      <div class="row" style="border:1px solid rgba(234,179,8,0.25);background:rgba(234,179,8,0.04);"><span style="color:var(--warn);font-weight:700;">4/23 오늘</span><span>유가 $100대 유지 여부, 초기실업수당·PMI, 한국 KOSPI 6,500 안착 여부</span></div>
+      <div class="row"><span>4/28</span><span>관세 공청회 — 한국·일본·EU 관련 헤드라인 체크</span></div>
+      <div class="row"><span>4/30</span><span>PCE 물가 — 유가 재상승이 기대 인플레로 번지는지 확인</span></div>
+      <div class="row"><span>5월 초</span><span>FOMC — 신고가 랠리의 다음 검증대</span></div>
+    </div>
+
+    <div class="section-label">리스크 매트릭스</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px;">
+      <div class="row" style="border-left:3px solid var(--dn);"><span style="color:var(--dn);">유가 재급등</span><span>Brent $105~110, WTI $98~105 → 인플레·금리 부담 재점화</span></div>
+      <div class="row" style="border-left:3px solid var(--dn);"><span style="color:var(--dn);">호르무즈 협상 무산</span><span>유조선 공격 반복·선박 통행 차질 장기화</span></div>
+      <div class="row" style="border-left:3px solid var(--warn);"><span style="color:var(--warn);">신고가 추격 매수</span><span>지수는 강하지만 상승 폭이 좁아지는 쏠림장</span></div>
+      <div class="row" style="border-left:3px solid var(--warn);"><span style="color:var(--warn);">한국 반도체 과밀</span><span>외국인 수급이 삼성·하이닉스에 집중돼 중소형주는 소외 가능</span></div>
+      <div class="row" style="border-left:3px solid var(--up);"><span style="color:var(--up);">실적 호조 지속</span><span>AI·산업재·대형 기술주가 유가 부담을 흡수</span></div>
+    </div>
+  </div>
+
+  <div id="t5" class="tab-pane">
+    <div class="card" style="padding:16px;border-left:3px solid var(--up);margin-bottom:12px;">
+      <div style="font-size:0.85rem;font-weight:700;color:var(--up);margin-bottom:6px;">오늘 핵심 판단 — 보유는 유지, 추격은 금지</div>
+      <div style="font-size:0.84rem;line-height:1.8;color:var(--text-dim);">
+        시장은 전쟁 공포를 완전히 제거한 것이 아니라 실적 호조로 덮고 있다. 신고가 돌파 자체는 강세 신호지만, 유가가 $100 위에서 버티는 동안 신규 레버리지 매수는 기대값이 낮다. 기존 포지션은 유지하되, 새 진입은 눌림·실적 확인·유가 안정 세 조건이 맞을 때만 한다.
+      </div>
+    </div>
+
+    <div class="card" style="padding:16px;border-left:3px solid var(--warn);margin-bottom:12px;">
+      <div style="font-size:0.85rem;font-weight:700;color:var(--warn);margin-bottom:6px;">한국장 전략 — 지수보다 수급 집중을 본다</div>
+      <div style="font-size:0.84rem;line-height:1.8;color:var(--text-dim);">
+        KOSPI 6,500 돌파는 의미 있지만 삼성전자·SK하이닉스 쏠림이 너무 강하다. 반도체 보유자는 홀드, 신규자는 장중 급등 추격보다 실적 발표 전후 변동성 눌림을 기다린다. 반도체 외 종목은 “지수 강세 착시”에 속지 말고 개별 수급·실적을 따로 확인한다.
+      </div>
+    </div>
+
+    <div class="card" style="padding:16px;border-left:3px solid var(--text-muted);margin-bottom:12px;">
+      <div style="font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:6px;">매매 스캔 미생성 — 이유</div>
+      <div style="font-size:0.84rem;line-height:1.8;color:var(--text-dim);">
+        오늘은 “진입 후보 발굴”보다 “강한 랠리의 지속성 검증”이 우선이다. 유가·호르무즈 변수가 살아 있고 지수 신고가 직후라 손절폭 대비 기대수익이 애매하다. BTC도 $80K 돌파 전 추격보다 $76K 방어 여부 확인이 먼저다.
+      </div>
+    </div>
+
+    <div class="card source-list" style="padding:16px;border-left:3px solid var(--warn);">
+      <div style="font-size:0.85rem;font-weight:700;color:var(--warn);margin-bottom:6px;">데이터 출처</div>
+      <div style="font-size:0.78rem;line-height:1.8;color:var(--text-dim);">
+        <a href="https://apnews.com/article/77e67e3711b7f809005ed4365169b211" target="_blank">AP — 4/22 미국 주요 지수 종가</a><br>
+        <a href="https://www.wsj.com/finance/stocks/global-stocks-markets-dow-news-04-22-2026-fba86de5" target="_blank">WSJ — 신고가 랠리·실적·유가 흐름</a><br>
+        <a href="https://www.marketwatch.com/story/global-oil-climbs-back-to-100-a-barrel-after-iran-flexes-its-power-over-oil-tankers-in-hormuz-9de1dd30" target="_blank">MarketWatch — 호르무즈·유조선 공격·유가 $100대</a><br>
+        <a href="https://www.ajupress.com/view/20260423094370769" target="_blank">AJU PRESS — 4/23 KOSPI 6,500 돌파</a><br>
+        <a href="https://www.marketwatch.com/story/the-iran-cease-fire-has-boosted-investors-appetite-for-bitcoin-heres-why-it-could-break-past-80-000-soon-29c08c3e" target="_blank">MarketWatch — BTC $79K·ETF 유입</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
