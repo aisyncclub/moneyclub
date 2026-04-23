@@ -95,6 +95,15 @@ function showTab(id,btn){
     </div>
   </div>
 
+  <div class="card" style="padding:16px;border-left:3px solid var(--up);margin-bottom:16px;">
+    <div style="font-size:0.72rem;font-weight:700;color:var(--up);margin-bottom:6px;">추가 업데이트 (4/23 오후 확인)</div>
+    <div style="font-size:0.84rem;line-height:1.85;color:var(--text-dim);">
+      <strong style="color:var(--up);">SK하이닉스 실적이 반도체 랠리의 숫자 근거를 확인했다.</strong> 1Q26 매출 52.5763조원, 영업이익 37.6103조원, 영업이익률 72%. HBM·AI 서버 메모리 수요가 단순 기대가 아니라 실제 이익으로 전환됐다는 점이 핵심이다.<br>
+      <strong style="color:var(--warn);">Tesla는 “숫자 개선 vs Robotaxi 속도 리스크”가 같이 나왔다.</strong> 매출은 약 $22.4B, FCF는 $1.44B로 개선됐지만, Robotaxi 확장 일정이 시장 기대만큼 직선적이지 않을 수 있다는 해석도 나온다.<br>
+      <strong style="color:var(--text);">결론:</strong> 오늘 보고서의 판단은 유지한다. 주식시장은 리스크온이지만, 신규 추격보다 <b>반도체 실적 확인 후 눌림</b>과 <b>유가 안정</b>을 기다리는 쪽이 더 안전하다.
+    </div>
+  </div>
+
   <div class="tab-nav">
     <button class="tab-btn active" onclick="showTab('t1',this)">인과 체인</button>
     <button class="tab-btn" onclick="showTab('t2',this)">주식 시장</button>
@@ -135,7 +144,8 @@ function showTab(id,btn){
         <span class="green">미국 신고가 + AI·반도체 강세</span><br>
         <span style="color:var(--text-muted);">&rarr;</span> 한국 4/23 오전 KOSPI 6,500 돌파, 09:28 기준 6,539.80(+1.90%)<br>
         <span style="color:var(--text-muted);">&rarr;</span> Samsung Electronics·SK hynix가 상승 주도<br>
-        <span style="color:var(--text-muted);">&rarr;</span> 외국인 순매수의 약 70%가 삼성전자·SK하이닉스에 집중<br>
+        <span style="color:var(--text-muted);">&rarr;</span> SK하이닉스 Q1 매출 52.5763조원·영업이익 37.6103조원·OPM 72%로 HBM 슈퍼사이클 확인<br>
+        <span style="color:var(--text-muted);">&rarr;</span> 외국인 순매수의 상당 부분이 삼성전자·SK하이닉스에 집중<br>
         <span style="color:var(--text-muted);">&rarr;</span> 결론: 한국장 강세는 맞지만 “내 계좌가 지수만큼 오르지 않는” 쏠림 장세 가능성 높음
       </div>
     </div>
@@ -220,6 +230,10 @@ function showTab(id,btn){
         <div class="mini-title">반도체가 지수를 만든 장</div>
         <div class="mini-body">삼성전자와 SK하이닉스가 미국 AI 랠리를 그대로 받아 KOSPI 상승을 주도했다. 외국인 수급도 두 종목에 집중되며 지수 레벨을 끌어올렸다.</div>
       </div>
+      <div class="mini-card" style="border-left:3px solid var(--up);">
+        <div class="mini-title">SK하이닉스 실적 서프라이즈</div>
+        <div class="mini-body">1Q26 매출 52.5763조원, 영업이익 37.6103조원, 영업이익률 72%. HBM과 AI 서버용 고부가 메모리가 이익률을 끌어올렸다. 이제 반도체 랠리는 기대가 아니라 실적 기반이다.</div>
+      </div>
       <div class="mini-card" style="border-left:3px solid var(--warn);">
         <div class="mini-title">지수 착시 주의</div>
         <div class="mini-body">반도체를 들고 있으면 강세장이지만, 비주도 업종은 체감이 약할 수 있다. 지금은 “KOSPI가 올랐다”보다 “내 종목이 외국인·실적·환율 수혜에 연결됐나”가 더 중요하다.</div>
@@ -232,13 +246,17 @@ function showTab(id,btn){
         <div class="mini-title">다음 검증은 실적</div>
         <div class="mini-body">SK하이닉스·삼성전자 기대가 이미 주가에 반영되고 있다. 숫자보다 HBM 공급, 마진, 고객사 확정 코멘트가 상승 지속 여부를 결정한다.</div>
       </div>
+      <div class="mini-card" style="border-left:3px solid var(--dn);">
+        <div class="mini-title">삼성전자 노무 리스크</div>
+        <div class="mini-body">삼성전자 노조는 보상 확대를 요구하며 집회를 진행했고, 파업 가능성도 거론된다. 단기 주가 변수는 아니어도, HBM 추격전이 필요한 삼성 입장에서는 공급·생산 차질 헤드라인을 계속 체크해야 한다.</div>
+      </div>
     </div>
 
     <div class="section-label">오늘의 관전 종목</div>
     <div style="margin-bottom:16px;">
       <div class="watch-card">
         <div class="watch-head"><span class="watch-ticker">TSLA</span><span class="watch-tag">실적 후 반응</span></div>
-        <div class="watch-body">매출 기대 상회와 FCF $1.4B 개선이 시간외 반등을 만들었다. 오늘 본장에서는 “실적 숫자”보다 컨퍼런스콜 이후 Robotaxi·Cybercab·마진 코멘트가 얼마나 신뢰받는지가 중요하다. 상승 지속 기준은 장중 $400 안착, 실패 시 $380대 재테스트 가능.</div>
+        <div class="watch-body">매출 약 $22.4B, FCF $1.44B, 마진 개선이 시간외 반등을 만들었다. 다만 Robotaxi 확장 일정에 대해 “일부 도시 지연 가능성” 해석도 있어 오늘 본장에서는 단순 실적 반등보다 컨퍼런스콜 이후 신뢰도가 중요하다. 상승 지속 기준은 장중 $400 안착, 실패 시 $380대 재테스트 가능.</div>
       </div>
       <div class="watch-card">
         <div class="watch-head"><span class="watch-ticker">NVDA · MSFT · AMZN</span><span class="watch-tag">AI 랠리 핵심 축</span></div>
@@ -254,7 +272,7 @@ function showTab(id,btn){
       </div>
       <div class="watch-card warn">
         <div class="watch-head"><span class="watch-ticker">005930 · 000660</span><span class="watch-tag">한국장 주도주</span></div>
-        <div class="watch-body">삼성전자·SK하이닉스는 KOSPI 6,500 돌파의 핵심이다. 외국인 순매수가 계속 두 종목으로 몰리면 지수는 더 갈 수 있지만, 쏠림이 과해지면 단기 차익실현도 빠르다. 신규 진입자는 장중 고점 추격보다 오전 급등 후 오후 수급 유지 여부를 본다.</div>
+        <div class="watch-body">삼성전자·SK하이닉스는 KOSPI 6,500 돌파의 핵심이다. SK하이닉스 실적은 HBM 슈퍼사이클을 숫자로 증명했고, 삼성전자는 HBM 추격과 노무 리스크가 동시에 존재한다. 신규 진입자는 장중 고점 추격보다 급등 후 수급 유지 여부를 본다.</div>
       </div>
     </div>
 
@@ -331,7 +349,7 @@ function showTab(id,btn){
     <div class="card" style="padding:16px;border-left:3px solid var(--warn);margin-bottom:12px;">
       <div style="font-size:0.85rem;font-weight:700;color:var(--warn);margin-bottom:6px;">한국장 전략 — 지수보다 수급 집중을 본다</div>
       <div style="font-size:0.84rem;line-height:1.8;color:var(--text-dim);">
-        KOSPI 6,500 돌파는 의미 있지만 삼성전자·SK하이닉스 쏠림이 너무 강하다. 반도체 보유자는 홀드, 신규자는 장중 급등 추격보다 실적 발표 전후 변동성 눌림을 기다린다. 반도체 외 종목은 “지수 강세 착시”에 속지 말고 개별 수급·실적을 따로 확인한다.
+        KOSPI 6,500 돌파는 의미 있지만 삼성전자·SK하이닉스 쏠림이 너무 강하다. SK하이닉스 실적 서프라이즈로 반도체 보유자는 홀드 명분이 강화됐다. 신규자는 장중 급등 추격보다 실적 발표 후 차익실현 눌림을 기다린다. 반도체 외 종목은 “지수 강세 착시”에 속지 말고 개별 수급·실적을 따로 확인한다.
       </div>
     </div>
 
@@ -349,7 +367,10 @@ function showTab(id,btn){
         <a href="https://www.wsj.com/finance/stocks/global-stocks-markets-dow-news-04-22-2026-fba86de5" target="_blank">WSJ — 신고가 랠리·실적·유가 흐름</a><br>
         <a href="https://www.marketwatch.com/story/global-oil-climbs-back-to-100-a-barrel-after-iran-flexes-its-power-over-oil-tankers-in-hormuz-9de1dd30" target="_blank">MarketWatch — 호르무즈·유조선 공격·유가 $100대</a><br>
         <a href="https://www.ajupress.com/view/20260423094370769" target="_blank">AJU PRESS — 4/23 KOSPI 6,500 돌파</a><br>
-        <a href="https://www.marketwatch.com/story/the-iran-cease-fire-has-boosted-investors-appetite-for-bitcoin-heres-why-it-could-break-past-80-000-soon-29c08c3e" target="_blank">MarketWatch — BTC $79K·ETF 유입</a>
+        <a href="https://www.marketwatch.com/story/the-iran-cease-fire-has-boosted-investors-appetite-for-bitcoin-heres-why-it-could-break-past-80-000-soon-29c08c3e" target="_blank">MarketWatch — BTC $79K·ETF 유입</a><br>
+        <a href="https://news.skhynix.com/q1-2026-business-results/" target="_blank">SK hynix — 1Q26 공식 실적 발표</a><br>
+        <a href="https://apnews.com/article/38e7a5030d3688850d3e8d8baf240f58" target="_blank">AP — 삼성전자 노조 집회·파업 리스크</a><br>
+        <a href="https://electrek.co/2026/04/22/tesla-tsla-q1-2026-financial-results/" target="_blank">Electrek — Tesla Q1 2026 실적·Robotaxi 해석</a>
       </div>
     </div>
   </div>
